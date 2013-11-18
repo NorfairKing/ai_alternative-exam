@@ -1,6 +1,98 @@
 \documentclass[alternative-exam.tex]{subfiles}
 \begin{document}
 
-\chapter{Vraag 2}
+\chapter{Matchmaker}
+Een matchmaking bureau wil een systeem maken dat hen zegt of een potenti\"ele partner al dan niet goed is voor een bepaalde client. Ze ontwikkelen uiteindelijk een systeem dat machine learning gebruikt om "zijn mening" te geven.
+
+\section{Vraag}
+Het bureau vraagt kandidaten een aantal persoonlijke eigenschappen om te geven.
+De specifieke mogelijkheden zijn voor elke eigenschap beperkt.
+\begin{itemize}
+\item Geslacht: man / vrouw
+\item Leeftijd: jonger / zelfde / ouder\footnote{De kandidaat moet zijn leeftijd opgeven, maar het systeem houdt enkel bij of de kandidaat jonger of ouder is dan de client, of ongeveer dezelfde leeftijd heef tals de client.}
+\item Muziek: pop / latin / jazz  / klassiek
+\item Sport: tennis / golf / joggen / fitness / voetbal
+\end{itemize}
+De client heeft de vorige kandidaten beoordeeld zoals beschreven in figuur \ref{beoordeling}
+\begin{figure}[H]
+\centering
+\caption{Beoordeling}
+\label{beoordeling}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+geslacht & leeftijd & muziek & sport & beoordeling\\
+\hline
+vrouw & jonger & latin & joggen & +\\
+man & ouder & klassiek & golf & -\\
+vrouw & zelfde & pop & tennis & -\\
+\hline
+\end{tabular}
+\end{figure}
+Aan de hand van de formulering van het systeem heeft het IT departement een hypothesetaal opgesteld zoals beschreven in figuur \ref{hypothesetaal}.
+\begin{figure}[htb]
+\centering
+\caption{Hypothesetaal}
+\label{hypothesetaal}
+\begin{tikzpicture}
+\node (s) at (-4,-0.5) {\small Geslacht};
+\node (sG) at (-4,-1) {\small ?};
+\node (si) at (-5,-2.5) {\small man \tiny m};
+\draw[->] (sG) -- (si);
+\node (sw) at (-3,-2.5) {\small vrouw \tiny v};
+\draw[->] (sG) -- (sw);
+
+%\draw (0,0.5) -- (0,-3);
+\node (a) at (4,-0.5) {\small Leeftijd};
+\node (aG) at (4,-1) {\small ?};
+\node (ay) at (2.5,-2.5) {\small jonger \tiny j};
+\draw[->] (aG) -- (ay);
+\node (am) at (4,-2.5) {\small zelfde \tiny z};
+\draw[->] (aG) -- (am);
+\node (ao) at (5.5,-2.5) {\small ouder\tiny o};
+\draw[->] (aG) -- (ao);
+\end{tikzpicture}\\\vspace{1cm}
+\begin{tikzpicture}
+\node (h) at (-4,-0.5) {Muzieksmaak};
+\node (hG) at (-4,-1) {\small ?};
+\node (hi) at (-5,-2.5) {\small mainstream \tiny i};
+\draw[->] (hG) -- (hi);
+\node (hig) at (-6,-4.25) {\small pop \tiny g};
+\draw[->] (hi) -- (hig);
+\node (hil) at (-5,-3.75) {\small latin \tiny l};
+\draw[->] (hi) -- (hil);
+\node (hr) at (-3,-2.5) {\small stijlvol \tiny s};
+\draw[->] (hG) -- (hr);
+\draw[->] (hr) -- (hil);
+\node (hrs) at (-3,-3.75) {\small jazz \tiny j};
+\draw[->] (hr) -- (hrs);
+\node (hrf) at (-2,-4.25) {\small klassiek \tiny k};
+\draw[->] (hr) -- (hrf);
+%\draw (0,0.5) -- (0,-5);
+\node (h) at (4,-0.5) {Sport};
+\node (hG) at (4,-1) {\small ?};
+
+\node (hi) at (1.5,-2.5) {\small rijk \tiny r};
+\draw[->] (hG) -- (hi);
+\node (hig) at (0,-4.25) {\small tennis \tiny t};
+\draw[->] (hi) -- (hig);
+\node (hil) at (1.5,-4.25) {\small golf \tiny g};
+\draw[->] (hi) -- (hil);
+\node (hv) at (3.5,-2.5) {\small arrogant \tiny a};
+\draw[->] (hG) -- (hv);
+\node (hiv) at (3.5,-4.25) {\small voetbal \tiny v};
+\draw[->] (hv) -- (hiv);
+\draw[->] (hi) -- (hiv);
+\draw[->] (hv) -- (hil);
+\node (hr) at (6.5,-2.5) {\small niet competitief \tiny nc};
+\draw[->] (hG) -- (hr);
+\node (hrs) at (5.5,-4.25) {\small joggen \tiny j};
+\draw[->] (hr) -- (hrs);
+\node (hrf) at (7.5,-4.25) {\small fitness \tiny f};
+\draw[->] (hr) -- (hrf);
+
+\end{tikzpicture}
+\end{figure}
+
+\section{Modeloplossing}
 
 \end{document}
