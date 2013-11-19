@@ -8,10 +8,10 @@ Professor Veys geeft een tussentijdse toets voor Lineaire Algebra in week 9 van 
 Hij wil rekening houden met de voorkeuren van alle richtingen die deze toets krijgen. De jaarverantwoordlijken van wiskunde, fysica en informatica geven hun voorkeuren door. De voorkeuren zien er als volgt uit.\\\\
 De wiskundigen gaan graag naar de winabar en willen daarom de toets liefst niet op donderdag. De fysici hebben op dinsdag een andere tussentijdse toets en zouden het liefst minstens één dag na die toets geen toets hebben, zodat ze tijd hebben om te studeren. De informatici willen de toets liefst niet op maandag, omdat er dan een deelexamen van SOCS plaatsvindt. Geen enkele richting wil de toets op vrijdag, omdat ze op donderdag willen uitgaan.\\\\
 Professor Veys zet het liefst de toets voor de informatici als eerst, omdat die verbetering het langst duurt. Bovendien wil hij niet dat de drie toetsen op dezelfde dag vallen maar hij wil ook niet er dagen tussen de toetsen zijn. Hij wil dus de drie toetsen op drie opeenvolgende dagen zetten.\\\\
-Hoe moet plant Professor Veys best de tussentijdse toets voor de drie richtingen?
+Hoe plant Professor Veys best de tussentijdse toets voor de drie richtingen?
 
 \section{Modeloplossing}
-We lossen dit probleem om met constraint processing technieken. We zullen de beperkingen formeel definieren, en er een constraint processing oplossingsmethode op uitvoeren.
+We lossen dit probleem om met constraint processing technieken. We zullen de beperkingen formeel defini\"eren, en er een constraint processing oplossingsmethode op uitvoeren.
 \subsection{Formele formulering}
 \begin{figure}[H]
 \centering
@@ -32,7 +32,7 @@ vrijdag & 5\\
 We kiezen drie variabelen. Noem $z_f$, $z_w$, $z_i$ respectievelijk de dag waarop fysica, wiskunde en informatica de toets krijgt. Om de beperkingen makkelijk op te schrijven wijzen we aan elke dag van maandag tot vrijdag in week 9 (de dagen dat er een toets gegeven kan worden) een getal toe zoals beschreven in figuur \ref{waarde_dagen}.
 Nu kunnen we de constraints formuleren volgens deze waarden.
 
-\subsubsection{Unaire constraints}
+\subsubsection{Unaire beperkingen}
 Geen enkele richting wil hun toets op vrijdag. Dit kunnen we formuleren als volgt.
 \[z_f \neq 5,\ z_w \neq 5,\ z_i \neq 5\]
 De Wiskundigen willen hun toets niet op donderdag.
@@ -57,7 +57,7 @@ c(z_i) & \leftrightarrow & z_i \neq 5 \wedge z_i \neq 1\\
 \end{array}
 \right.
 \]
-\subsubsection{Binaire constraints}
+\subsubsection{Binaire beperkingen}
 Professor Veys zorgt voor de binaire constraints. Hij wil de toets als eerst aan de informatici geven.
 \[
 z_i < z_w,\ z_i < z_f
@@ -118,6 +118,8 @@ d_{z_i}' &= \{2,3,4,5\}\\
 Als samenvatting van heel het probleem kunnen we het zogenaamde constraint network opstellen. Zie figuur \ref{fig:fourTeachersConstraintNetwork}.
 
 \subsection{Uitwerking van de oplossingsmethode}
+We zullen nu de methode 'forward checking' toepassen op dit probleem. Omwille van effici\"entie zullen we een zogenaamde dynamic search rearrangement techniek toepassen. We zullen op elk niveau de waarde kiezen met het kleinste overgebleven domein kiezen om een waarde aan toe te kennen.
+
 
 
 \end{document}

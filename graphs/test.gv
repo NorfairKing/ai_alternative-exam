@@ -1,0 +1,8 @@
+/* courtesy Ian Darwin and Geoff Collyer, Softquad Inc. */
+digraph unix {
+    size="6,6";
+    node [shape=rect,color=grey, style=filled, height=0.15, width=0.3];
+    "<BOTTOM>" -> "vsjv";
+    "vsjv" -> "v?sr";
+    "vsjv" -> "v?sa";
+}
