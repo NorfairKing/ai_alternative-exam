@@ -1,0 +1,68 @@
+digraph iter_1 {
+    node [shape=rect height=0.1, width=0.2];
+    edge [arrowhead = none];
+
+    top  [label = "[?,?,?,?]"];
+    bot  [label = "&#8869;"];
+
+    ex_1 [label= "[v,s,j,v]"];
+    
+    ex_2_1 [label = "[v,?,?,?]"];
+    ex_2_4 [label = "[?,?,s,?]"];
+    ex_2_5 [label = "[?,?,?,r]"];
+ 
+    ex_3_2 [label = "[v,z,?,?]"];
+    
+    ex_4_1 [label = "[v,?,s,r]"];
+    ex_4_2 [label = "[v,?,s,a]"];
+
+    ex_5_1 [label = "[v,?,s,?]"];
+    ex_5_2 [label = "[?,j,s,?]"];
+    ex_5_3 [label = "[?,z,s,?]"];
+    ex_5_4 [label = "[?,?,m,?]"];
+    ex_5_5 [label = "[?,?,j,?]"];
+    ex_5_6 [label = "[?,?,s,t]",shape=none];
+    ex_5_7 [label = "[?,?,s,g]",shape=none];
+    ex_5_8 [label = "[?,?,s,n]",shape=none];
+
+    ex_5_9 [label = "[v,?,?,r]"];
+    ex_5_a [label = "[?,j,?,r]"];
+    ex_5_b [label = "[?,z,?,r]"];
+    ex_5_c [label = "[?,?,m,r]"];
+    ex_5_d [label = "[?,?,j,r]",shape=none];
+    ex_5_e [label = "[?,?,?,t]",shape=none];
+    ex_5_f [label = "[?,?,?,g]"];
+    ex_5_g [label = "[?,?,?,n]",shape=none];
+        
+    top -> ex_2_1;
+    top -> ex_2_4;
+    top -> ex_2_5;
+
+    ex_2_1 -> ex_3_2;    
+
+    ex_2_4 -> ex_5_1;
+    ex_2_4 -> ex_5_2;
+    ex_2_4 -> ex_5_3;
+    ex_2_4 -> ex_5_4;
+    ex_2_4 -> ex_5_5;
+    ex_2_4 -> ex_5_6;
+    ex_2_4 -> ex_5_7;
+    ex_2_4 -> ex_5_8;
+    
+    ex_2_5 -> ex_5_9;
+    ex_2_5 -> ex_5_a;
+    ex_2_5 -> ex_5_b;
+    ex_2_5 -> ex_5_c;
+    ex_2_5 -> ex_5_d;
+    ex_2_5 -> ex_5_e;
+    ex_2_5 -> ex_5_f;
+    ex_2_5 -> ex_5_g;
+
+    ex_5_4 -> ex_4_1[style=invis];
+    ex_5_5 -> ex_4_2[style=invis];
+    
+    ex_4_1 -> ex_1;
+    ex_4_2 -> ex_1;
+    
+    ex_1 -> bot;
+}

@@ -1,0 +1,28 @@
+digraph iter_1 {
+    node [shape=rect height=0.1, width=0.2];
+    edge [arrowhead = none];
+
+    top  [label = "[?,?,?,?]"];
+    bot  [label = "&#8869;"];
+
+    ex_1 [label= "[v,z,j,v]"];
+    
+    ex_2_1 [label = "[v,?,?,?]"];
+    ex_2_2 [label = "[?,z,?,?]",shape=none];
+    ex_2_3 [label = "[?,o,?,?]",shape=none];
+    ex_2_4 [label = "[?,?,s,?]"];
+    ex_2_5 [label = "[?,?,?,r]"];
+    ex_2_6 [label = "[?,?,?,f]",shape=none];
+    
+    top -> ex_2_1;
+    top -> ex_2_2;
+    top -> ex_2_3;
+    top -> ex_2_4;
+    top -> ex_2_5;
+    top -> ex_2_6;
+    
+    ex_2_3 -> ex_1[style=invis];
+    ex_2_4 -> ex_1[style=invis];
+    
+    ex_1 -> bot;
+}
