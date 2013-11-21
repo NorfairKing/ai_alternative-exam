@@ -1,0 +1,17 @@
+graph iter_0 {
+    node [shape=ellipse, height=0.1, mindist=1.5];
+    edge [arrowhead = none];
+    
+    subgraph start {
+        f [label = "f"];
+        {
+            rank = same;
+            w [label = "w"];
+            i [label = "i"];
+            w -- i [label = "c(w,i)"];
+            rankdir=LR;
+        }
+        f -- w [label = "c(f,w)"];
+        i -- f [label = "c(i,f)"]; 
+    }   
+}
