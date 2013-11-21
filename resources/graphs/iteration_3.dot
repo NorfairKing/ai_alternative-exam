@@ -5,7 +5,7 @@ digraph iter_1 {
     top  [label = "[?,?,?,?]"];
     bot  [label = "&#8869;"];
 
-    ex_1 [label= "[v,s,j,v]"];
+    ex_1 [label= "[v,z,j,v]"];
     
     ex_2_1 [label = "[v,?,?,?]"];
     ex_2_4 [label = "[?,?,s,?]"];

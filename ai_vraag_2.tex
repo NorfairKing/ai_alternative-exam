@@ -122,8 +122,7 @@ Het eerste voorbeeld is een positief voorbeeld. We generaliseren alle hypothesen
 \label{iter_2}
 \includegraphics[scale=0.5]{resources/graphs/iteration_2.png}
 \end{figure}
-Het volgende voorbeeld is negatief beoordeeld. We specifi\"eren alle hypothesen in $G$ waaraan het voorbeeld voldoet. $[m,o,k,g]$ voldoet aan $[?,?,?,?]$ dus we moeten dit specifi\"eren tot het voorbeeld net niet meer aan die nieuwe hypothese(n) voldoet.
-
+Het volgende voorbeeld is negatief beoordeeld. We specifi\"eren alle hypothesen in $G$ waaraan het voorbeeld voldoet. $[m,o,k,g]$ voldoet aan $[?,?,?,?]$ dus we moeten dit specifi\"eren tot het voorbeeld net niet meer aan die nieuwe hypothese(n) voldoet. We voegen in totaal zes nodes toe onder $[?,?,?,?]$. Nu begint het prunen. We verwijderen $[?,z,?,?]$, $[?,o,?,?]$ en $[?,?,?,f]$ omdat deze hypothesen inconsistent zijn met $[v,z,j,v]$. Een overzicht van deze iteratie zien we in figuur \ref{iter_2}.
 
 \subsection{Iteratie 3}
 \begin{figure}
@@ -133,6 +132,9 @@ Het volgende voorbeeld is negatief beoordeeld. We specifi\"eren alle hypothesen 
 \label{iter_3}
 \includegraphics[scale=0.5]{resources/graphs/iteration_3.png}
 \end{figure}
+Voorbeeld $3$ is opnieuw negatief beoordeeld. We voeren opnieuw de bovenstaande procedure uit. Deze keer wordt er weer veel verwijderd zodat er uiteindelijk enkel $[v,z,?,?]$ over. $[v,?,s,?]$ is wel consistent met $[v,z,j,v]$, maar het is een specificatie van $[?,?,s,?]$, en dus redundant. Zie figuur \ref{iter_3} voor het volledige overzicht van deze iteratie.
+
+\subsection{Iteratie 4}
 \begin{figure}
 [H]
 \centering
@@ -140,12 +142,17 @@ Het volgende voorbeeld is negatief beoordeeld. We specifi\"eren alle hypothesen 
 \label{iter_4}
 \includegraphics[scale=0.5]{resources/graphs/iteration_4.png}
 \end{figure}
+Het volgende voorbeeld $4$ is een tweede voorbeeld dat positief beoordeeld is. We generaliseren $[v,s,j,v]$ tot een hypothese die ook het nieuwe voorbeeld omvat. Hiervoor zijn twee mogelijkheden die we beide toevoegen zoals beschreven in figuur \ref{iter_4}.
+
+\subsection{Iteratie 5}
 \begin{sidewaysfigure}
 \centering
 \caption{Iteratie 5}
 \label{iter_5}
 \includegraphics[scale=0.35]{resources/graphs/iteration_5.png}
 \end{sidewaysfigure}
+In iteratie 5 behandelen we opnieuw een voorbeeld dat negatief beoordeeld is. Deze keer worden er heel veel nodes toegevoegd. De meeste ervan worden verwijderd, om verschillende redenen. $[?,?,s,n]$ is een specificatie van $[?,?,?,n]$ en $[?,?,?,n]$ wordt verwijderd omdat het inconsistent is met $[v,?,s,a]$. De voledige beschrijving staat in figuur \ref{iter_5}. Het uiteindelijke resutaat is beschreven in figuur \ref{resultaat}.
+
 \begin{sidewaysfigure}
 \centering
 \caption{Resultaat}
@@ -153,4 +160,10 @@ Het volgende voorbeeld is negatief beoordeeld. We specifi\"eren alle hypothesen 
 \includegraphics[scale=0.5]{resources/graphs/resultaat.png}
 \end{sidewaysfigure}
 
+\subsection*{beslissingsprocedure}
+De dame die aan het eind van de dag binnen wordt als $[v,j,j,j]$ gecategoriseerd.
+We kijken nu naar $S\cup G$ en zien dat deze persoon aan $3$ hypothese voldoet en voldoet niet aan de $10$ andere. We kunnen het besluit dus als volgt simuleren.
+\begin{center}
+Deze dame zal met een kans van $\frac{3}{10+3} = 23,08 \%$ goedgekeurd worden door de gegeven client.
+\end{center}
 \end{document}
