@@ -1,17 +1,79 @@
-graph iter_0 {
+digraph iter_0 {
+    compound=true; 
     node [shape=ellipse, height=0.1, mindist=1.5];
     edge [arrowhead = none];
-    
-    subgraph start {
-        f [label = "f"];
+    subgraph cluster_start {
+        f [label = "f {4,5}"];
         {
             rank = same;
-            w [label = "w"];
-            i [label = "i"];
-            w -- i [label = "c(w,i)"];
+            w [label = "w {1,2,3,5}"];
+            i [label = "i {2,3,4,5}"];
+            w -> i [label = "c(w,i)"];
             rankdir=LR;
         }
-        f -- w [label = "c(f,w)"];
-        i -- f [label = "c(i,f)"]; 
-    }   
+        f -> w [label = "c(f,w)"];
+        i -> f [label = "c(i,f)"]; 
+    }
+    subgraph cluster_ex_1 {
+        ex_1_f [label = "f = 4"];
+        {
+            rank = same;
+            ex_1_w [label = "w = {2,3,5}"];
+            ex_1_i [label = "i = {2,3}"];
+            ex_1_w -> ex_1_i [label = "c(w,i)"];
+            rankdir=LR;
+        }
+        ex_1_f -> ex_1_w [label = "c(f,w)"];
+        ex_1_i -> ex_1_f [label = "c(i,f)"];
+    }  
+    subgraph cluster_ex_2 {
+        ex_2_f [label = "f = 5"];
+        {
+            rank = same;
+            ex_2_w [label = "w = {3}"];
+            ex_2_i [label = "i = {}"];
+            ex_2_w -> ex_2_i [label = "c(w,i)"];
+            rankdir=LR;
+        }
+        ex_2_f -> ex_2_w [label = "c(f,w)"];
+        ex_2_i -> ex_2_f [label = "c(i,f)"];
+    }
+    w -> ex_1_f [ltail=cluster_start, lhead=cluster_ex_1];
+    i -> ex_2_f [ltail=cluster_start, lhead=cluster_ex_2];
+
+    subgraph cluster_ex_3 {
+        ex_3_f [label = "f = 4"];
+        {
+            rank = same;
+            ex_3_w [label = "w = {3}"];
+            ex_3_i [label = "i = 2"];
+            ex_3_w -> ex_3_i [label = "c(w,i)"];
+            rankdir=LR;
+        }
+        ex_3_f -> ex_3_w [label = "c(f,w)"];
+        ex_3_i -> ex_3_f [label = "c(i,f)"];
+    }  
+
+    subgraph cluster_ex_4 {
+        ex_4_f [label = "f = 4"];
+        {
+            rank = same;
+            ex_4_w [label = "w = {5}"];
+            ex_4_i [label = "i = 3"];
+            ex_4_w -> ex_4_i [label = "c(w,i)"];
+            rankdir=LR;
+        }
+        ex_4_f -> ex_4_w [label = "c(f,w)"];
+        ex_4_i -> ex_4_f [label = "c(i,f)"];
+    }  
+    ex_1_w -> ex_3_f [ltail=cluster_ex_1, lhead=cluster_ex_3];
+    ex_1_i -> ex_4_f [ltail=cluster_ex_1, lhead=cluster_ex_4];
+
+    opl_1 [label= "f=4,w=3,i=2",shape=box];
+    opl_2 [label= "f=4,w=5,i=3",shape=box];
+    ex_3_w -> opl_1 [ltail=cluster_ex_3];
+    ex_4_i -> opl_2 [ltail=cluster_ex_4];
+
+        
+
 }
