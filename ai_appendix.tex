@@ -1,0 +1,69 @@
+\documentclass[alternative-exam.tex]{subfiles}
+
+\setlength{\textwidth}{6in}
+\addtolength{\hoffset}{-0.5in}
+\setlength{\topmargin}{-0.2in}
+\setlength{\textheight}{9in}
+
+\newcommand{\algorithmicinput}{\textbf{Input:}}
+\newcommand{\algorithmicoutput}{\textbf{Output:}}
+\newcommand{\algorithmicinit}{\textbf{Initialize:}}
+\newcommand{\INPUT}{\item[\algorithmicinput]}
+\newcommand{\OUTPUT}{\item[\algorithmicoutput]}
+\newcommand{\INIT}{\item[\algorithmicinit]}
+\newcommand{\algorithmicalgo}{\textbf{Algorithm:}}
+\newcommand{\ALGO}{\item[\algorithmicalgo]}
+
+\begin{document}
+
+\appendix
+\chapter*{Appendix}
+\section{A* Algoritme}
+
+
+\pagestyle{empty}
+\begin{algorithmic}
+\label{A*}
+\INPUT
+\STATE A graph of nodes with costs for all connections, a start node $S$ and a goal node $G$
+\STATE A heuristic estimate $h$ for each node (of distance to $G$)
+\STATE A queue Q of possible paths
+
+\OUTPUT
+\STATE Cheapest path from $S$ to $G$
+\end{algorithmic}
+\begin{algorithmic}
+\ALGO
+\STATE $Q$ $\leftarrow$ $S$
+\WHILE{$Q$ not empty AND $G$ not reached \underline{by first path}}
+\STATE $P$ $\leftarrow$ get (and remove) first path from $Q$
+\WHILE{$P$ has more children}
+\STATE \vspace{-0.5cm}
+
+\STATE $p$ $\leftarrow$ next child path of $P$
+\STATE Remove $p$ if it contains a loop
+\STATE Calculate cost $c$
+\STATE Calculate $f$ (= $c$ + $h$ of last node)
+
+\STATE Add $p$ to $Q$
+\ENDWHILE
+
+
+\STATE Sort $Q$ according to $f$
+\FORALL{path $P$ in $Q$}
+\STATE $n$ $\leftarrow$ last node of $P$
+\IF{another path $P2$ contains $n$ AND \underline{$c$ of $P$ $\geq$ $c$ of $P2$}}
+\STATE Remove $P$ from $Q$
+\ENDIF
+\ENDFOR
+
+\ENDWHILE
+\IF{$G$ reached}
+\STATE Succes
+\ELSE
+\STATE Failure
+\ENDIF
+\end{algorithmic}
+
+
+\end{document}

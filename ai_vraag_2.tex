@@ -2,7 +2,7 @@
 \begin{document}
 
 \chapter{Matchmaker}
-Een matchmaking bureau wil een systeem maken dat hen zegt of een potenti\"ele partner al dan niet goed is voor een bepaalde cli\"ent. Ze ontwikkelen uiteindelijk een systeem dat machine-learning gebruikt om "zijn mening" te geven.
+Een matchmaking bureau wil een systeem maken dat hen zegt of een potenti\"ele partner al dan niet goed is voor een bepaalde cli\"ent. Ze ontwikkelen uiteindelijk een systeem dat machine learning gebruikt om te voorspellen hoe de cli\"ent een potentiele partner zal beoordelen.
 
 \section{Vraag}
 Het bureau vraagt kandidaten een aantal persoonlijke eigenschappen op te geven.
@@ -13,7 +13,7 @@ De specifieke mogelijkheden zijn voor elke eigenschap beperkt.
 \item Muziek: pop / latin / jazz  / klassiek
 \item Sport: tennis / golf / joggen / fitness / voetbal
 \end{itemize}
-De client heeft de vorige kandidaten beoordeeld zoals beschreven in figuur \ref{beoordeling}
+De cli\"ent heeft de vorige kandidaten beoordeeld zoals beschreven in figuur \ref{beoordeling}
 \begin{figure}[H]
 \centering
 \caption{Beoordeling}
@@ -94,10 +94,10 @@ Aan de hand van de formulering van het systeem heeft het IT departement een hypo
 
 \end{tikzpicture}
 \end{figure}
-Aan het eind van de dag komt er een dame binnen die jonger is dan de client, naar jazz muziek luistert, en elke week gaat joggen. Is deze dame een goede match voor de client, volgens het systeem?
+Aan het eind van de dag komt er een dame binnen die jonger is dan de cli\"ent, naar jazzmuziek luistert, en elke week gaat joggen. Is deze dame een goede match voor de cli\"ent, volgens het systeem?
 
 \section{Modeloplossing}
-We voeren het version-spaces algoritme uit op de voorbeelden uit de opgave. We beginnen met het initialiseren van $S$ en $G$. $S$ bevat initieel enkel de hypothese die niets aanvaard. $G$ daarentegen, bevat de hypothese die alles aanvaard.
+We voeren het version-spaces algoritme uit op de voorbeelden uit de opgave. We beginnen met het initialiseren van $S$ en $G$. $S$ bevat initieel enkel de hypothese die niets aanvaardt. $G$ daarentegen, bevat de hypothese die alles aanvaard.
 \[
 S = \{\bot\}
 \]
@@ -123,6 +123,7 @@ Het eerste voorbeeld is een positief voorbeeld. We generaliseren alle hypothesen
 \includegraphics[scale=0.5]{resources/graphs/iteration_2.png}
 \end{figure}
 Het volgende voorbeeld is negatief beoordeeld. We specifi\"eren alle hypothesen in $G$ waaraan het voorbeeld voldoet. $[m,o,k,g]$ voldoet aan $[?,?,?,?]$ dus we moeten dit specifi\"eren tot het voorbeeld net niet meer aan die nieuwe hypothese(n) voldoet. We voegen in totaal zes nodes toe onder $[?,?,?,?]$. Nu begint het prunen. We verwijderen $[?,z,?,?]$, $[?,o,?,?]$ en $[?,?,?,f]$ omdat deze hypothesen inconsistent zijn met $[v,z,j,v]$. Een overzicht van deze iteratie zien we in figuur \ref{iter_2}.
+<TODO HIER STAAT EEN FOUT IN DE UITWERKING, BEKIJK DIT OPNIEUW.>
 
 \subsection{Iteratie 3}
 \begin{figure}
@@ -132,7 +133,7 @@ Het volgende voorbeeld is negatief beoordeeld. We specifi\"eren alle hypothesen 
 \label{iter_3}
 \includegraphics[scale=0.5]{resources/graphs/iteration_3.png}
 \end{figure}
-Voorbeeld $3$ is opnieuw negatief beoordeeld. We voeren opnieuw de bovenstaande procedure uit. Deze keer wordt er weer veel verwijderd zodat er uiteindelijk enkel $[v,z,?,?]$ over. $[v,?,s,?]$ is wel consistent met $[v,z,j,v]$, maar het is een specificatie van $[?,?,s,?]$, en dus redundant. Zie figuur \ref{iter_3} voor het volledige overzicht van deze iteratie.
+Voorbeeld $3$ is opnieuw negatief beoordeeld. We voeren opnieuw de bovenstaande procedure uit. Deze keer wordt er weer veel verwijderd zodat er uiteindelijk enkel $[v,z,?,?]$ over blijft. $[v,?,s,?]$ is wel consistent met $[v,z,j,v]$, maar het is een specificatie van $[?,?,s,?]$, en dus redundant. Zie figuur \ref{iter_3} voor het volledige overzicht van deze iteratie.
 
 \subsection{Iteratie 4}
 \begin{figure}

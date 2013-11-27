@@ -11,20 +11,18 @@
 \end{figure}
 
 \section{Vraag}
-Rush hour is een schuifpuzzel die een verkeersopstopping voorstelt. Het doel is om de rode auto (X) uit het verkeer te krijgen in zo weinig mogelijk zetten. De andere auto's staan in de weg en elke auto kan enkel vooruit en achteruit bewegen. Auto's mogen meerdere vakjes per keer verschuiven maar er mag maar één auto per zet verplaatst worden.
-
-\subsection{Zoekruimte}
-Beschouw elke stand van het bord als een toestand van de zoekruimte. Beschouw bovendien elke mogelijke zet als een boog in het netwerk. Het is makkelijk in te zien dat deze zoekruimte kan voorgesteld worden als een graaf.
+Rush hour is een schuifpuzzel die een verkeersopstopping voorstelt. Het doel is om de rode auto (X) uit het verkeer te krijgen in zo weinig mogelijk zetten. De andere auto's staan in de weg en elke auto kan enkel vooruit en achteruit bewegen. Auto's mogen meerdere vakjes per keer verschuiven maar er mag maar \'e\'en auto per zet verplaatst worden.\\\\
+We kunnen het zoeken naar een oplossing modelleren met behulp van een graaf, waarin elke stand een knoop is en elke mogelijke zet een boog. De eindtoestand waar we dan naar op zoek gaan is een stand van het bord waarin de rode auto zich buiten het bord bevindt.
 
 \subsection{Eindtoestand} De begintoestand is gegeven in figuur \ref{rushour}. De eindtoestand is een toestand waarin de rode auto zich buiten het bord bevindt. 
 
-\subsection{Kostfunctie}De kost van een toestand kan beschreven worden als het aantal vakjes dat alle autootjes in totaal verplaatst zijn om tot de huidige toestand te komen. 
-
-\subsection{Heuristische functie} Als heuristiek kiezen we het kleinste aantal auto's dat onbeweeglijk in de weg staat van de rode auto. We weten zeker dat dit een onderschatting is voor de totale kost omdat al die auto's minstens aan de kant moeten gezet worden
-\footnote{We voegen hier nog één aan toe, omdat doeltoestanden dan precies één hebben als heuristische waarde en omdat de heuristische waarde van een toestand dan heel makkelijk intu\"itief te zien is.}\footnote{BvB. De heuristische waarde van de root is $3$ want $C$ staat in de weg van de rode auto en om $C$ te verplaatsen moeten er minstens $2$ auto's verplaatst worden, namelijk $A$ en $B$ of $O$ en $D$.}.
+\subsection{Kostfunctie}De kostfunctie voor het A* algoritme is een belangrijke parameter. De kost van een toestand beschrijven we als het aantal vakjes dat alle autootjes in totaal verplaatst zijn om tot de huidige toestand te komen. We zouden kunnen opteren voor het aantal zetten dat nodig is om in de huidige toestand te komen als kostfunctie. Deze functie maakt minder onderscheid tussen goede en slechte toestanden en zal het probleem dus minder snel oplossen.
+5
+\subsection{Heuristische functie} De heuristische functie is een volgende belangrijke parameter voor het A* algoritme. Als heuristiek kiezen we het kleinste aantal auto's dat onbeweeglijk in de weg staat van de rode auto. We weten zeker dat dit een onderschatting is voor de totale kost omdat minstens al die auto's aan de kant moeten gezet worden. Als heuristiek kunnen we ook
+\footnote{We voegen hier nog één aan toe, omdat doeltoestanden dan precies één hebben als heuristische waarde en omdat de heuristische waarde van een toestand dan heel makkelijk intu\"itief te zien is. bvb: De heuristische waarde van de root is $3$ want $C$ staat in de weg van de rode auto en om $C$ te verplaatsen moeten er minstens $2$ auto's verplaatst worden, namelijk $A$ en $B$ of $O$ en $D$.}.
 
 \section{Modeloplossing}
-De volledige oplossing voor dit probleem is sneller uit te leggen aan de hand van een rush-hour spelbord dan op papier. Dit probleem is echter een prachtig voorbeeld van hoe uiteenlopend de toepassingen van A* zijn. Daarom zal ik elk aspect van A* uit de oplossing eens volledig uitwerken maar niet elke keer. Ik zal het probleem dus niet volledig oplossen, maar wel zo veel als nodig.\\\\
+De volledige oplossing voor dit probleem is sneller uit te leggen aan de hand van een rush-hour spelbord dan op papier. Dit probleem is echter een prachtig voorbeeld van hoe uiteenlopend de toepassingen van A* zijn. Daarom zal ik elk aspect van A* uit de oplossing eens volledig uitwerken maar niet elke keer. Ik zal het probleem dus niet volledig oplossen, maar wel zo veel als nodig. Het volledige A* algoritme bevindt zich nog eens in de appendix (\ref{A*}).\\\\
 De volgende tabel stelt de begintoestand voor. Deze toestand is de wortel die initieel in de rij staat.
 \begin{center}
 $root = $
@@ -39,9 +37,13 @@ $root = $
 \hline
 \end{tabular}
 \end{center}
+We zullen in de uitwerking spreken over de $f$ functie. Deze definieren we als volgt.
+\[
+f(pad) = cost(pad) + heuristiek(einde(pad))
+\]
 
 \subsection{Iteratie 1}
-We starten nu de while-lus van het algoritme. We expanderen alle mogelijke toestanden die in 1 zet bereikbaar zijn vanaf de begintoestand. Die toestanden zetten we allemaal op de queue. We expanderen de nodes in volgorde van het alfabet en altijd de mogelijkheid waarin het autootje de grootste afstand aflegt eerst.
+We starten nu de while-lus van het A* algoritme. We expanderen alle mogelijke toestanden die in 1 zet bereikbaar zijn vanaf de begintoestand. Die toestanden zetten we allemaal in de rij. We expanderen de nodes in volgorde van het alfabet en altijd de mogelijkheid waarin het autootje de grootste afstand aflegt eerst.
 
 \begin{center}
 $T_{11} = $
@@ -120,7 +122,7 @@ $T_{16} = $
 \hline
 \end{tabular}}
 \end{center}
-Geen enkele van deze toestanden is beschrijft een cyclus in het netwerk. De rij moet nu nog gesorteerd worden op de $f$ functie. Aangezien elke zet dezelfde kost heeft, namelijk $1$, is dat sorteren equivalent aan het sorteren op de heuristische waarde van elke toestand.
+Geen enkele van deze paden naar deze toestanden vormt een cyclus in de zoekruimte De rij moet nu nog gesorteerd worden op de $f$ functie. Aangezien elke zet dezelfde kost heeft, namelijk $1$, is dat sorteren equivalent aan het sorteren op de heuristische waarde van elke toestand.
 \[
 \begin{array}{c c}
 f(T_{11}) &= 2 + 2 = 4\\

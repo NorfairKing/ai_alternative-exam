@@ -6,14 +6,16 @@
 
 \usepackage[a4paper,pdftex]{geometry}	% Use A4 paper margins
 \usepackage[dutch]{babel}
+%\usepackage[T1]{fontenc}           % For font
+%\usepackage[garamond]{mathdesign}  % For font
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{subfiles}
 \usepackage{graphicx}
-\usepackage{algorithm}
-\usepackage{algorithmic}
+\usepackage{algorithm} % For algorithms
+\usepackage{algorithmic} % For algorithms
 \usepackage{float}
 \usepackage{tikz}
 \usepackage{rotating} % for sideways figures
@@ -27,7 +29,7 @@
 
 \definecolor{grey}{rgb}{0.9,0.9,0.9} % Color of the box surrounding the title - these values can be changed to give the box a different color	
 
-\AtBeginDocument{%
+\AtBeginDocument{
   \renewcommand\chaptername{Vraag}
 }
 
@@ -67,9 +69,10 @@
 
 {
 \centering \Large 
-\hfill Tom Sydney Kerckhove \\
+\hfill Tom Sydney Kerckhove - r0372924\\
 \hfill KU Leuven 2013-2014\\
 \hfill Bachelor Informatica \\
+\hfill Prof. Danny Deschreye\\
 }
 
 %----------------------------------------------------------------------------------------
@@ -87,5 +90,7 @@
 \subfile{ai_vraag_4}
 \subfile{ai_vraag_5}
 \subfile{ai_reflectie}
+
+\subfile{ai_appendix}
 
 \end{document}
