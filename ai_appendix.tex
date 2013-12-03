@@ -17,10 +17,8 @@
 \begin{document}
 
 \appendix
-\chapter*{Appendix}
-\section{A* Algoritme}
-
-
+\chapter{Appendix}
+\section{A*}
 \pagestyle{empty}
 \begin{algorithmic}
 \label{A*}
@@ -64,6 +62,107 @@
 \STATE Failure
 \ENDIF
 \end{algorithmic}
+\pagebreak
 
+\section{Version Spaces}
+\begin{algorithmic}
+\label{versionspaces}
+\INPUT
+\STATE A list of all labeled (\textcolor{blue}{+} or \textcolor{red}{-}) examples: $E$
+\STATE A hierarchy of concepts $H$
+\STATE Two \emph{version spaces} of hypotheses that are valid given the examples:
+\STATE \hspace{0.3cm} - $G$: The set of the most general hypotheses
+\STATE \hspace{0.3cm} - $S$: The set of the most specific hypotheses
+
+\OUTPUT
+\STATE $G$ and $S$
+\end{algorithmic}
+\begin{algorithmic}
+\ALGO
+\STATE $G$ $\leftarrow$ {hypothesis that covers everything (top)}
+\STATE $S$ $\leftarrow$ {hypothesis that covers nothing (bottom)}
+\WHILE{$E$ not empty}
+\STATE $e$ $\leftarrow$ get (and remove) first example from $E$
+\IF{$e$ is labeled +}
+\FORALL{hypothesis $h$ in $S$ that do NOT cover $e$}
+\STATE $s$ $\leftarrow$ all minimal generalizations of $h$ according to $H$
+\STATE Remove all hypotheses from $s$ that do not specialize any hypothesis of $G$
+\STATE Remove all hypotheses from $s$ that generalize an hypothesis of $S$
+\STATE Add remaining hypotheses from $s$ to $S$
+\ENDFOR
+\FORALL{hypothesis $h$ in $G$ that do NOT cover $e$}
+\STATE Remove $h$ from $G$
+\ENDFOR
+\ENDIF
+\IF{$e$ is labeled -}
+\FORALL{hypothesis $h$ in $G$ that do NOT cover $e$}
+\STATE $g$ $\leftarrow$ all minimal specializations of $h$ according to $H$
+\STATE Remove all hypotheses from $g$ that do not generalize any hypothesis of $S$
+\STATE Remove all hypotheses from $g$ that specialize an hypothesis of $G$
+\STATE Add remaining hypotheses from $g$ to $G$
+\ENDFOR
+\FORALL{hypothesis $h$ in $S$ that do NOT cover $e$}
+\STATE Remove $h$ from $S$
+\ENDFOR
+\ENDIF
+\IF{$G$ empty OR $S$ empty}
+\STATE Report failure
+\ENDIF
+\ENDWHILE
+\end{algorithmic}
+\pagebreak
+
+\section{Forward Checking}
+\begin{algorithmic}
+\label{forwardchecking}
+\INPUT
+\STATE A constraint network with $n$ variables $v_i$
+\STATE A list $C$ of constraints $c(v_i,v_j)$
+\STATE A set of possible assignments $a_{i,k}$ for each variable $v_i$
+
+\OUTPUT
+\STATE An assignment $a_{i,k}$ for each variable $v_i$ where all constraints in $C$ are respected
+\end{algorithmic}\begin{algorithmic}
+\ALGO($depth$):
+\STATE Lookahead check (\ref{lookaheadcheck})
+\FORALL{$a_{depth,k}$}
+\STATE $v_{depth}$ $\leftarrow$ $a_{depth,k}$
+\STATE queue $Q$ $\leftarrow$ constraints from $C$ involving $v_{depth}$
+\WHILE{$Q$ not empty}
+\STATE $c(v_{depth},v_j)$ (or $c(v_j,v_{depth})$) $\leftarrow$ get (and remove) from $Q$
+\IF{$a_{j,k}$ inconsistent w.r.t. $c(v_{depth},v_j)$ (or $c(v_j,v_{depth})$)}
+\STATE remove $a_{j,k}$
+\ENDIF
+\ENDWHILE
+\STATE Lookahead check (\ref{lookaheadcheck})
+\STATE ... see (chronological) backtracking algorithm
+\ENDFOR
+\end{algorithmic}
+
+\subsection{Lookahead check (AC3)}
+\label{lookaheadcheck}
+\begin{algorithmic}
+\INPUT
+\STATE A constraint network with $n$ variables $v_i$
+\STATE A list $C$ of constraints $c(v_i,v_j)$
+\STATE A set of possible assignments $a_{i,k}$ for each variable $v_i$
+
+\OUTPUT
+\STATE An assignment $a_{i,k}$ for each variable $v_i$ where all constraints in $C$ are respected
+\end{algorithmic}\begin{algorithmic}
+\ALGO
+
+\STATE $del\_occured$ $\leftarrow$ $false$
+
+\STATE queue $Q$ $\leftarrow$ all constraints from $C$
+\WHILE{$Q$ not empty}
+\STATE $c(v_i,v_j)$ $\leftarrow$ get (and remove) from $Q$
+\IF{assignment $a_{i,k}$ (or $a_{j,k}$) inconsistent w.r.t. $c(v_i,v_j)$}
+\STATE remove $a_{i,k}$ (or $a_{j,k}$)
+\STATE add all constraints in $C$ involving $v_i$ (or $v_j$) to $Q$
+\ENDIF
+\ENDWHILE
+\end{algorithmic}
+\pagebreak
 
 \end{document}

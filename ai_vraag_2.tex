@@ -97,7 +97,7 @@ Aan de hand van de formulering van het systeem heeft het IT departement een hypo
 Aan het eind van de dag komt er een dame binnen die jonger is dan de cli\"ent, naar jazzmuziek luistert, en elke week gaat joggen. Is deze dame een goede match voor de cli\"ent, volgens het systeem?
 
 \section{Modeloplossing}
-We voeren het version-spaces algoritme uit op de voorbeelden uit de opgave. We beginnen met het initialiseren van $S$ en $G$. $S$ bevat initieel enkel de hypothese die niets aanvaardt. $G$ daarentegen, bevat de hypothese die alles aanvaard.
+We voeren het version-spaces algoritme uit op de voorbeelden uit de opgave. We beginnen met het initialiseren van $S$ en $G$. $S$ bevat initieel enkel de hypothese die niets aanvaardt. $G$ daarentegen, bevat de hypothese die alles aanvaardt.
 \[
 S = \{\bot\}
 \]
@@ -133,7 +133,7 @@ Het volgende voorbeeld is negatief beoordeeld. We specifi\"eren alle hypothesen 
 \label{iter_3}
 \includegraphics[scale=0.5]{resources/graphs/iteration_3.png}
 \end{figure}
-Voorbeeld $3$ is opnieuw negatief beoordeeld. We voeren opnieuw de bovenstaande procedure uit. Deze keer wordt er weer veel verwijderd zodat er uiteindelijk enkel $[v,z,?,?]$ over blijft. $[v,?,s,?]$ is wel consistent met $[v,z,j,v]$, maar het is een specificatie van $[?,?,s,?]$, en dus redundant. Zie figuur \ref{iter_3} voor het volledige overzicht van deze iteratie.
+Voorbeeld $3$ is opnieuw negatief beoordeeld. We voeren opnieuw de bovenstaande procedure uit. Deze keer wordt er weer veel verwijderd zodat er uiteindelijk enkel $[v,z,?,?]$ overblijft. $[v,?,s,?]$ is wel consistent met $[v,z,j,v]$, maar het is een specificatie van $[?,?,s,?]$, en dus redundant. Zie figuur \ref{iter_3} voor het volledige overzicht van deze iteratie.
 
 \subsection{Iteratie 4}
 \begin{figure}
@@ -161,9 +161,9 @@ In iteratie 5 behandelen we opnieuw een voorbeeld dat negatief beoordeeld is. De
 \includegraphics[scale=0.5]{resources/graphs/resultaat.png}
 \end{sidewaysfigure}
 
-\subsection*{beslissingsprocedure}
-De dame die aan het eind van de dag binnen wordt als $[v,j,j,j]$ gecategoriseerd.
-We kijken nu naar $S\cup G$ en zien dat deze persoon aan $3$ hypothese voldoet en voldoet niet aan de $10$ andere. We kunnen het besluit dus als volgt simuleren.
+\subsection{beslissingsprocedure}
+De dame die aan het eind van de dag binnenkomt wordt als $[v,j,j,j]$ gecategoriseerd.
+We kijken nu naar $S\cup G$ en zien dat deze persoon aan drie hypothesen voldoet en niet aan de $10$ andere. We kunnen het besluit dus als volgt simuleren.
 \begin{center}
 Deze dame zal met een kans van $\frac{3}{10+3} = 23,08 \%$ goedgekeurd worden door de gegeven client.
 \end{center}
