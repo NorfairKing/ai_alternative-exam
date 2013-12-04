@@ -2,17 +2,17 @@ digraph iter_1 {
     node [shape=rect height=0.1, width=0.2];
     edge [arrowhead = none];
 
-    top  [label = "[?,?,?,?]"];
-    bot  [label = "&#8869;"];
+    top  [label = "[?,?,?,?]", shape=ellipse];
+    bot  [label = "&#8869;", shape=ellipse];
 
     ex_1 [label= "[v,z,j,v]"];
     
     ex_2_1 [label = "[v,?,?,?]"];
-    ex_2_2 [label = "[?,z,?,?]",shape=none];
-    ex_2_3 [label = "[?,o,?,?]",shape=none];
+    ex_2_2 [label = "[?,z,?,?]"];
+    ex_2_3 [label = "[?,o,?,?]",shape=ellipse];
     ex_2_4 [label = "[?,?,s,?]"];
     ex_2_5 [label = "[?,?,?,r]"];
-    ex_2_6 [label = "[?,?,?,f]",shape=none];
+    ex_2_6 [label = "[?,?,?,f]",shape=ellipse];
     
     top -> ex_2_1;
     top -> ex_2_2;

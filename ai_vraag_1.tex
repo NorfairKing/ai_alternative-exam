@@ -11,7 +11,7 @@
 \end{figure}
 
 \section{Vraag}
-Rush hour is een schuifpuzzel die een verkeersopstopping voorstelt. Het doel is om de rode auto (X) uit het verkeer te krijgen in zo weinig mogelijk zetten. De andere auto's staan in de weg en elke auto kan enkel vooruit en achteruit bewegen. Auto's mogen meerdere vakjes per keer verschuiven maar er mag maar \'e\'en auto per zet verplaatst worden.\\\\
+Rush hour is een schuifpuzzel die een verkeersopstopping voorstelt. Het doel is om de rode auto (X) uit het verkeer te krijgen in zo weinig mogelijk zetten. De andere auto's staan in de weg en elke auto kan enkel vooruit en achteruit bewegen. Auto's mogen meerdere vakjes per keer verschuiven maar er mag maar \'e\'en auto per zet verplaatst worden.
 We kunnen het zoeken naar een oplossing modelleren met behulp van een graaf, waarin elke stand een knoop is en elke mogelijke zet een boog. De eindtoestand waar we dan naar op zoek gaan is een stand van het bord waarin de rode auto zich buiten het bord bevindt.
 
 \subsection{Eindtoestand} De begintoestand is gegeven in figuur \ref{rushour}. De eindtoestand is een toestand waarin de rode auto zich buiten het bord bevindt. 
@@ -22,7 +22,8 @@ We kunnen het zoeken naar een oplossing modelleren met behulp van een graaf, waa
 \footnote{We voegen hier nog één aan toe, omdat doeltoestanden dan precies één hebben als heuristische waarde en omdat de heuristische waarde van een toestand dan heel makkelijk intu\"itief te zien is. bvb: De heuristische waarde van de root is $3$ want $C$ staat in de weg van de rode auto en om $C$ te verplaatsen moeten er minstens $2$ auto's verplaatst worden, namelijk $A$ en $B$ of $O$ en $D$.}.
 
 \section{Modeloplossing}
-De volledige oplossing voor dit probleem is sneller uit te leggen aan de hand van een rush-hour spelbord dan op papier. Dit probleem is echter een prachtig voorbeeld van hoe uiteenlopend de toepassingen van A* zijn. Daarom zal ik elk aspect van A* uit de oplossing eens volledig uitwerken maar niet elke keer. Ik zal het probleem dus niet volledig oplossen, maar wel zo veel als nodig. Het volledige A* algoritme bevindt zich nog eens in de appendix (\ref{A*}).\\\\
+De volledige oplossing voor dit probleem is sneller uit te leggen aan de hand van een rush-hour spelbord dan op papier. Dit probleem is echter een prachtig voorbeeld van hoe uiteenlopend de toepassingen van A* zijn. Daarom zal ik elk aspect van A* uit de oplossing eens volledig uitwerken maar niet elke keer. Ik zal het probleem dus niet volledig oplossen, maar wel zo veel als nodig. Het volledige A* algoritme bevindt zich nog eens in de appendix (\ref{A*}).
+
 De volgende tabel stelt de begintoestand voor. Deze toestand is de wortel die initieel in de rij staat.
 \begin{center}
 $root = $
@@ -482,9 +483,11 @@ T_{35}, T_{22}, T_{24}, T_{25}, T_{11}, T_{16}, T_{36}, T_{26}, T_{15}, T_{37}, 
 We zien nu dat er een doeltoestand in de rij staat, namelijk $T_{49}$, maar A* zal nog niet stoppen, want $T_{49}$ staat nog niet vooraan de lijst.
 
 \subsection{Verdere uitwerking}
-De verdere uitwerking van de oplossing zal ik hier niet volledig opschrijven, maar beschrijven.\\\\
+De verdere uitwerking van de oplossing zal ik hier niet volledig opschrijven, maar beschrijven.
+
 Eigen aan dit probleem is dat er in de latere iteraties zeer veel cycli zullen worden gevormd, omdat het aantal mogelijke staten eindig en zelfs vrij klein is.
-Als we de vierde iteratie naar de rij kijken, zien we dat de doeloplossing die er in zit, op de negende plaats staat. Vanaf nu zal A* enkel nog oplossingen vinden die slechter zijn dan het pad naar $T_{49}$, en dus worden verwijderd. In deze opgave is het toevallig zo dat er twee even lange paden zijn naar een eindtoestand. A* zal ze dus zeker alle twee gevonden hebben op een bepaald moment. Het algoritme zal één van de twee paden verwijderen uit de rij. We weten dus dat A*, in dit specifiek geval, nog minstens 9 iteraties zal voltooien voordat het tot een oplossing komt. Bovendien zijn er paden die nooit zullen bekeken worden. Hiervan is het pad met $T_{14}$ een voorbeeld.\\\\
+Als we de vierde iteratie naar de rij kijken, zien we dat de doeloplossing die er in zit, op de negende plaats staat. Vanaf nu zal A* enkel nog oplossingen vinden die slechter zijn dan het pad naar $T_{49}$, en dus worden verwijderd. In deze opgave is het toevallig zo dat er twee even lange paden zijn naar een eindtoestand. A* zal ze dus zeker alle twee gevonden hebben op een bepaald moment. Het algoritme zal één van de twee paden verwijderen uit de rij. We weten dus dat A*, in dit specifiek geval, nog minstens 9 iteraties zal voltooien voordat het tot een oplossing komt. Bovendien zijn er paden die nooit zullen bekeken worden. Hiervan is het pad met $T_{14}$ een voorbeeld.
+
 Elk aspect van A* is nu aan bod gekomen.
 \begin{itemize}
 \item Kostfunctie

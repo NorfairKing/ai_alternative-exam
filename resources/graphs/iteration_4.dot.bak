@@ -1,0 +1,31 @@
+digraph iter_1 {
+    node [shape=rect height=0.1, width=0.2];
+    edge [arrowhead = none];
+
+    top  [label = "[?,?,?,?]"shape=ellipse];
+    bot  [label = "&#8869;",shape=ellipse];
+
+    ex_1 [label= "[v,s,j,v]",shape=ellipse];
+    
+    ex_2_1 [label = "[v,?,?,?]",shape=ellipse];
+    ex_2_4 [label = "[?,?,s,?]"];
+    ex_2_5 [label = "[?,?,?,r]"];
+ 
+    ex_3_2 [label = "[v,z,?,?]"];
+    
+    ex_4_1 [label = "[v,?,s,r]"];
+    ex_4_2 [label = "[v,?,s,a]"];
+    
+    top -> ex_2_1;
+    top -> ex_2_4;
+    top -> ex_2_5;
+
+    ex_2_1 -> ex_3_2;    
+
+    ex_3_2 -> ex_4_1[style=invis];
+    
+    ex_4_1 -> ex_1;
+    ex_4_2 -> ex_1;
+    
+    ex_1 -> bot;
+}

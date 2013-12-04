@@ -3,7 +3,7 @@ digraph iter_1 {
     edge [arrowhead = none];
 
     top  [label = "[?,?,?,?]"];
-    bot  [label = "&#8869;"];
+    bot  [label = "&#8869;",shape=ellipse];
 
     ex_1 [label= "[v,z,j,v]"];
     
