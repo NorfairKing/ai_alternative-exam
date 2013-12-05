@@ -25,8 +25,8 @@ geslacht & leeftijd & muziek & sport & beoordeling\\
 vrouw & zelfde & jazz & voetbal & +\\
 man & jonger & pop & joggen & -\\%
 vrouw & ouder & pop & fitness & -\\
-vrouw & zelfde & klassiek & golf & +\\
-vrouw & jonger & latin & tennis & +\\
+vrouw & jonger & klassiek & golf & +\\
+vrouw & zelfde & latin & tennis & +\\
 \hline
 \end{tabular}
 \end{figure}
@@ -97,13 +97,14 @@ Aan het eind van de dag komt er een dame binnen die jonger is dan de cli\"ent, n
 
 \section{Modeloplossing}
 % TODO toevoegen wat S is, wat G is, wat de vormen van de nodes betekenen.
-We voeren het version-spaces algoritme uit op de voorbeelden uit de opgave. We beginnen met het initialiseren van $S$ en $G$. $S$ bevat initieel enkel de hypothese die niets aanvaardt. $G$ daarentegen, bevat de hypothese die alles aanvaardt.
+We voeren het version-spaces algoritme uit op de voorbeelden uit de opgave (zie \ref{versionspaces}). We beginnen met het initialiseren van $S$ en $G$. $S$ bevat initieel enkel de hypothese die met alles inconsistent is. $G$ daarentegen, bevat de hypothese die met alles consistent is.
 \[
 S = \{\bot\}
 \]
 \[
 G = \{[?,?,?,?]\}
 \]
+De hypothesen die in $S$ en $G$ zitten zijn na elke iteratie getekend in een graaf. De graag bestaat uit twee bomen waarvan de bovenste $S$ voorstelt en de onderste $G$. Niet alle hypothesen die getekend zijn zitten echter in $G$ of in $S$. Als een hypothese niet in \'e\'en van de verzamelingen zit wordt het met een ellips afgebeeld. De rechthoekige nodes zitten wel in $G$ of $S$.
 \subsection{Iteratie 1}
 \begin{figure}
 [H]
@@ -113,6 +114,10 @@ G = \{[?,?,?,?]\}
 \includegraphics[scale=0.5]{resources/graphs/iteration_1.png}
 \end{figure}
 Het eerste voorbeeld is een positief voorbeeld. We generaliseren alle hypothesen in $S$ waaraan het voorbeeld niet voldoet. $\bot$ wordt dus gegeneraliseerd naar de hypothese die het voorbeeld precies omvat. Het resultaat zien we in figuur \ref{iter_1}.
+\begin{itemize}
+\item $G = \{[?,?,?,?]\}$
+\item $S = \{[v,z,j,v]\}$
+\end{itemize}
 
 \subsection{Iteratie 2}
 \begin{figure}
@@ -122,18 +127,28 @@ Het eerste voorbeeld is een positief voorbeeld. We generaliseren alle hypothesen
 \label{iter_2}
 \includegraphics[scale=0.5]{resources/graphs/iteration_2.png}
 \end{figure}
-Het volgende voorbeeld is negatief beoordeeld. We specifi\"eren alle hypothesen in $G$ waaraan het voorbeeld voldoet. $[m,o,k,g]$ voldoet aan $[?,?,?,?]$ dus we moeten dit specifi\"eren tot het voorbeeld net niet meer aan die nieuwe hypothese(n) voldoet. We voegen in totaal zes nodes toe onder $[?,?,?,?]$. Nu begint het prunen. We verwijderen $[?,z,?,?]$, $[?,o,?,?]$ en $[?,?,?,f]$ omdat deze hypothesen inconsistent zijn met $[v,z,j,v]$. Een overzicht van deze iteratie zien we in figuur \ref{iter_2}.
-<TODO HIER STAAT EEN FOUT IN DE UITWERKING, BEKIJK DIT OPNIEUW.>
+Het volgende voorbeeld is negatief beoordeeld. We specifi\"eren alle hypothesen in $G$ waaraan het voorbeeld voldoet. $[m,j,p,g]$ voldoet aan $[?,?,?,?]$ dus we moeten dit specifi\"eren tot het voorbeeld net niet meer aan die nieuwe hypothese(n) voldoet. We voegen in totaal zes hypothesen toe onder $[?,?,?,?]$. Nu begint het snoeien. We verwijderen $[?,o,?,?]$ en $[?,?,?,f]$ omdat deze hypothesen inconsistent zijn met $[v,z,j,v]$. Een overzicht van deze iteratie zien we in figuur \ref{iter_2}.
+\begin{itemize}
+\item $G = \{[v,?,?,?],[?,z,?,?],[?,?,s,?],[?,?,?,r]\}$
+\item $S = \{[v,z,j,v]\}$
+\item Gesnoeid: $[?,o,?,?],[?,?,?,f]$
+\end{itemize}
 
 \subsection{Iteratie 3}
 \begin{sidewaysfigure}
 \centering
 \caption{Iteratie 3}
 \label{iter_3}
-\includegraphics[scale=0.4]{resources/graphs/iteration_3.png}
+\includegraphics[scale=0.35]{resources/graphs/iteration_3.png}
 \end{sidewaysfigure}
-Voorbeeld $3$ is opnieuw negatief beoordeeld. We voeren opnieuw de bovenstaande procedure uit. Deze keer wordt er weer veel verwijderd zodat er uiteindelijk enkel $[v,z,?,?]$ overblijft. $[v,?,s,?]$ is wel consistent met $[v,z,j,v]$, maar het is een specificatie van $[?,?,s,?]$, en dus redundant. Zie figuur \ref{iter_3} voor het volledige overzicht van deze iteratie.
+Voorbeeld $3$ is opnieuw negatief beoordeeld. We voeren opnieuw de bovenstaande procedure uit. Deze keer worden er weer een aantal hypothesen gesnoeid, maar we kunnen nu ook enkele hypothesen verwijderen omdat ze redundant zijn. $[?,z,j,?]$ en $[?,z,?,v]$ zijn respectievelijk specificaties van $[?,?,s,?]$ en $[?,?,?,r]$ en kunnen daarom ook verwijderd worden uit $G$. Zie figuur \ref{iter_3} voor het volledige overzicht van deze iteratie.
+\begin{itemize}
+\item $G = \{[?,v,?,j],[v,?,?,r],[?,z,j,?],[?,z,?,v]\}$
+\item $S = \{[v,z,j,v]\}$
+\item Gesnoeid: $[v,j,?,?]$, $[v,o,?,?]$, $[v,?,m,?]$, $[v,?,?,j]$, $[m,z,?,?]$, $[?,z,m,?]$, $[?,z,?,t]$,
 
+$[?,z,?,n]$ en $[?,z,j,?]$, $[?,z,?,v]$
+\end{itemize}
 \subsection{Iteratie 4}
 \begin{figure}
 [H]
@@ -143,7 +158,10 @@ Voorbeeld $3$ is opnieuw negatief beoordeeld. We voeren opnieuw de bovenstaande 
 \includegraphics[scale=0.5]{resources/graphs/iteration_4.png}
 \end{figure}
 Het volgende voorbeeld $4$ is een tweede voorbeeld dat positief beoordeeld is. We generaliseren $[v,s,j,v]$ tot een hypothese die ook het nieuwe voorbeeld omvat. Hiervoor zijn twee mogelijkheden die we beide toevoegen zoals beschreven in figuur \ref{iter_4}.
-
+\begin{itemize}
+\item $G = \{[?,v,?,j],[v,?,?,r],[?,z,j,?],[?,z,?,v]\}$
+\item $S = \{[v,?,s,r],[v,?,s,a]\}$
+\end{itemize}
 \subsection{Iteratie 5}
 \begin{figure}
 [H]
@@ -152,13 +170,22 @@ Het volgende voorbeeld $4$ is een tweede voorbeeld dat positief beoordeeld is. W
 \label{iter_5}
 \includegraphics[scale=0.5]{resources/graphs/iteration_5.png}
 \end{figure}
-In iteratie 5 behandelen we opnieuw een voorbeeld dat negatief beoordeeld is. Deze keer worden er heel veel nodes toegevoegd. De meeste ervan worden verwijderd, om verschillende redenen. $[?,?,s,n]$ is een specificatie van $[?,?,?,n]$ en $[?,?,?,n]$ wordt verwijderd omdat het inconsistent is met $[v,?,s,a]$. De voledige beschrijving staat in figuur \ref{iter_5}. Het uiteindelijke resutaat is beschreven in figuur.
+In iteratie 5 behandelen we ten slotte nog een positief voorbeeld. Deze keer wordt er maar \'e\'en hypothese toegevoegd en deze wordt meteen al weer verwijderd omdat ze een generalisatie is van $[v,?,s,r]$ en dus redundant is. De beschrijving van deze iteratie is te vinden in figuur \ref{iter_5}. Het resultaat van het version spaces algoritme zien we in figuur \ref{resultaat}.
+\begin{itemize}
+\item $G = \{[?,v,?,j],[v,?,?,r],[?,z,j,?],[?,z,?,v]\}$
+\item $S = \{[v,?,s,r],[v,?,s,a]\}$
+\item Gesnoeid: $[v,?,s,?]$
+\end{itemize}
+\begin{figure}
+[H]
+\centering
+\caption{Resultaat}
+\label{resultaat}
+\includegraphics[scale=0.5]{resources/graphs/resultaat.png}
+\end{figure}
 
 
 \subsection{beslissingsprocedure}
 De dame die aan het eind van de dag binnenkomt wordt als $[v,j,j,j]$ gecategoriseerd.
-We kijken nu naar $S\cup G$ en zien dat deze persoon aan drie hypothesen voldoet en niet aan de tien andere. Als we ervan uitgaan dat elke hypothese evenveel waard is kunnen we het besluit als volgt simuleren.
-\begin{center}
-Deze dame zal met een kans van $\frac{3}{10+3} = 23,08 \%$ goedgekeurd worden door de gegeven client.
-\end{center}
+We kijken nu naar $S\cup G$ en zien dat deze persoon aan \'e\'en hypothesen voldoet en niet aan de vijf andere. Als we ervan uitgaan dat elke hypothese evenveel waard is kunnen we besluiten dat de cli\"ent deze dame met een grotere kans zal afkeuren dan aanvaarden.
 \end{document}

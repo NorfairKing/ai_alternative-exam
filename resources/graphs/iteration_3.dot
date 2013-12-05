@@ -8,23 +8,23 @@ digraph iter_1 {
     ex_1 [label= "[v,z,j,v]"];
     
     ex_2_1 [label = "[v,?,?,?]",shape=ellipse];
-    ex_2_2 [label = "[?,z,?,?]"];
-    ex_2_4 [label = "[?,?,s,?]"];
-    ex_2_5 [label = "[?,?,?,r]"];
+    ex_2_2 [label = "[?,z,?,?]",shape=ellipse];
+    ex_2_4 [label = "[?,?,s,?]",shape=ellipse];
+    ex_2_5 [label = "[?,?,?,r]",shape=ellipse];
  
     ex_3_1  [label = "[v,j,?,?]",shape=ellipse];
-    ex_3_1  [label = "[v,o,?,?]",shape=ellipse];
-    ex_3_1  [label = "[v,?,m,?]",shape=ellipse];
-    ex_3_1  [label = "[?,v,?,j]"];
-    ex_3_4  [label = "[v,?,?,r]"];
-    ex_3_5  [label = "[v,?,?,j]",shape=ellipse];
+    ex_3_2  [label = "[v,o,?,?]",shape=ellipse];
+    ex_3_3  [label = "[v,?,m,?]",shape=ellipse];
+    ex_3_4  [label = "[v,?,?,j]"];
+    ex_3_5  [label = "[v,?,?,r]"];
+    ex_3_6  [label = "[v,?,?,j]",shape=ellipse];
  
-    ex_3_6  [label = "[m,z,?,?]",shape=ellipse];
-    ex_3_7  [label = "[?,z,m,?]",shape=ellipse];
-    ex_3_8  [label = "[J,z,j,?]"];
-    ex_3_9  [label = "[?,z,?,t]",shape=ellipse];
-    ex_3_10 [label = "[?,z,?,v]"];
-    ex_3_11 [label = "[?,z,?,n]",shape=ellipse];
+    ex_3_7  [label = "[m,z,?,?]",shape=ellipse];
+    ex_3_8  [label = "[?,z,m,?]",shape=ellipse];
+    ex_3_9  [label = "[?,z,j,?]"];
+    ex_3_10 [label = "[?,z,?,t]",shape=ellipse];
+    ex_3_11 [label = "[?,z,?,v]"];
+    ex_3_12 [label = "[?,z,?,n]",shape=ellipse];
        
     top -> ex_2_1;
     top -> ex_2_2;
@@ -36,13 +36,14 @@ digraph iter_1 {
     ex_2_1 -> ex_3_3;    
     ex_2_1 -> ex_3_4;    
     ex_2_1 -> ex_3_5;    
+    ex_2_1 -> ex_3_6;    
     
-    ex_2_2 -> ex_3_6;
     ex_2_2 -> ex_3_7;
     ex_2_2 -> ex_3_8;
     ex_2_2 -> ex_3_9;
     ex_2_2 -> ex_3_10;
     ex_2_2 -> ex_3_11;
+    ex_2_2 -> ex_3_12;
 
     ex_3_6 -> ex_1[style=invis];
     ex_3_7 -> ex_1[style=invis];
