@@ -5,3 +5,4 @@ dot -Tpng iteration_4.dot -o iteration_4.png
 dot -Tpng iteration_5.dot -o iteration_5.png
 dot -Tpng resultaat.dot -o resultaat.png
 dot -Tpng uitwerking.dot -o uitwerking.png
+dot -Tpng strips_1.dot -o strips_1.png

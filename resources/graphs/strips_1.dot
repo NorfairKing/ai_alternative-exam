@@ -1,0 +1,168 @@
+digraph structs {
+ node [shape=plaintext];
+ example [label=
+< <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="0">
+    <tr>
+        <td colspan="2">NAME1</td>
+    </tr>
+    <tr>
+        <td rowspan="3">IF</td>
+        <td>test1</td>
+    </tr>
+    <tr>
+        <td PORT="if">test2</td>
+    </tr>
+    <tr>
+        <td>test3</td>
+    </tr>
+    <tr>
+        <td rowspan="2">ADD</td>
+        <td PORT="add">test4</td>
+    </tr>
+    <tr>
+        <td>test5</td>
+    </tr>
+    <tr>
+        <td>DEL</td>
+        <td PORT="del">test6</td>
+    </tr>
+</TABLE>>]; 
+    
+
+
+i [label=
+< <table border="0" cellborder="1" cellspacing="0" cellpadding="0">
+    <tr>
+        <td port="name" colspan="2">BEGIN</td>
+    </tr>
+    <tr>
+        <td port="if_0">IF</td>
+        <td port="if_1">-</td>
+    </tr>
+    <tr>
+        <td port="add_0" rowspan="2">ADD</td>
+        <td port="add_1">In(Kamer)</td>
+    </tr>
+    <tr>
+        <td port="add_2">Vrij(Pan)</td>
+    </tr>
+    <tr>
+        <td port="del_0">DEL</td>
+        <td port="del_1">-</td>
+    </tr>
+</table>>]; 
+
+
+f [label=
+< <table border="0" cellborder="1" cellspacing="0" cellpadding="0">
+    <tr>
+        <td port="name" colspan="2">EINDE</td>
+    </tr>
+    <tr>
+        <td port="add_0" rowspan="2">IF</td>
+        <td port="add_1">In(Kamer)</td>
+    </tr>
+    <tr>
+        <td port="add_2">Heeft(Maaltijd)</td>
+    </tr>
+    <tr>
+        <td port="if_0">ADD</td>
+        <td port="if_1">-</td>
+    </tr>
+    <tr>
+        <td port="del_0">DEL</td>
+        <td port="del_1">-</td>
+    </tr>
+</table>>]; 
+
+h [label=
+< <table border="0" cellborder="1" cellspacing="0" cellpadding="0">
+    <tr>
+        <td port="name" colspan="2">HEEN</td>
+    </tr>
+    <tr>
+        <td port="if_0">IF</td>
+        <td port="if_1">In(Kamer)</td>
+    </tr>
+    <tr>
+        <td port="add_0">ADD</td>
+        <td port="add_1">In(Keuken)</td>
+    </tr>
+    <tr>
+        <td port="del_0">DEL</td>
+        <td port="del_1">In(Kamer)</td>
+    </tr>
+</table>>]; 
+
+t [label=
+< <table border="0" cellborder="1" cellspacing="0" cellpadding="0">
+    <tr>
+        <td port="name" colspan="2">TERUG</td>
+    </tr>
+    <tr>
+        <td port="if_0">IF</td>
+        <td port="if_1">In(Keuken)</td>
+    </tr>
+    <tr>
+        <td port="add_0">ADD</td>
+        <td port="add_1">In(Kamer)</td>
+    </tr>
+    <tr>
+        <td port="del_0">DEL</td>
+        <td port="del_1">In(Keuken)</td>
+    </tr>
+</table>>]; 
+
+ns [label=
+< <table border="0" cellborder="1" cellspacing="0" cellpadding="0">
+    <tr>
+        <td port="name" colspan="2">NS</td>
+    </tr>
+    <tr>
+        <td port="if_0">IF</td>
+        <td port="if_1">In(Keuken)</td>
+    </tr>
+    <tr>
+        <td port="add_0">ADD</td>
+        <td port="add_1">Heeft(RauwSpek)</td>
+    </tr>
+    <tr>
+        <td port="del_0">DEL</td>
+        <td port="del_1">-</td>
+    </tr>
+</table>>]; 
+
+
+ne [label=
+< <table border="0" cellborder="1" cellspacing="0" cellpadding="0">
+    <tr>
+        <td port="name" colspan="2">NE</td>
+    </tr>
+    <tr>
+        <td port="if_0">IF</td>
+        <td port="if_1">In(Keuken)</td>
+    </tr>
+    <tr>
+        <td port="add_0">ADD</td>
+        <td port="add_1">Heeft(RauwEi)</td>
+    </tr>
+    <tr>
+        <td port="del_0">DEL</td>
+        <td port="del_1">-</td>
+    </tr>
+</table>>]; 
+
+
+
+
+
+
+
+ between[style=invis,shape=point];
+ 
+ example:add:e -> between[arrowhead=none, color=green];
+ between -> t:if_0:w[color = green];
+
+ t:del_1:e -> between[color=red];
+
+}
