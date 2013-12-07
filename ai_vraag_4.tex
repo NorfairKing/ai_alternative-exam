@@ -14,6 +14,7 @@ Als student krijg je tijdens het werken wel eens zin in spek met eieren. Als lui
     if & -\\
     \hline
     add & In(Kamer)\\
+        & Vrij(Pan)\\
     \hline
     del & -\\
     \hline
@@ -92,7 +93,7 @@ In de keuken kan de student koken en alle overeenkomstige acties daarvoor staan 
     \multicolumn{2}{c}{BakEi (BE)}\\
     \hline
     if & In(Keuken)\\
-    & $\neg$Bezet(Pan)\\
+    & Vrij(Pan)\\
     & Heeft(RauwEi)\\
     \hline
     add & Heeft(EiKlaar)\\
@@ -104,31 +105,30 @@ In de keuken kan de student koken en alle overeenkomstige acties daarvoor staan 
     \multicolumn{2}{c}{BakSpek (BS)}\\
     \hline
     if & In(Keuken)\\
-    & $\neg$Bezet(Pan)\\
+    & Vrij(Pan)\\
     & Heeft(RauwSpek)\\
     \hline
-    add & Bezet(Pan)\\
-    & Bakt(Spek)\\
+    add & Bakt(Spek)\\
     \hline
     del & Heeft(RauwSpek)\\
+    & vrij(Pan)\\
     \hline
 \end{tabular}
 \\\vspace{0.25cm}
 \begin{tabular}{|c|c|}
-    \multicolumn{2}{c}{DraaiSpekOm (DO)}\\
+    \multicolumn{2}{c}{DraaiSpekOm (DSO)}\\
     \hline
     if & In(Keuken)\\
-    & Bezet(Pan)\\
     & Bakt(Spek)\\
     \hline
     add & Heeft(SpekKlaar)\\
+    & Vrij(Pan)\\
     \hline
-    del & Bezet(Pan)\\
-    & Bakt(Spek)\\
+    del & Bakt(Spek)\\
     \hline
 \end{tabular}
 \begin{tabular}{|c|c|}
-    \multicolumn{2}{c}{(OB)}\\
+    \multicolumn{2}{c}{LegOpBord(LOB)}\\
     \hline
     if & In(Keuken)\\
     & Heeft(SpekKlaar)\\
