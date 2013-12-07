@@ -1,0 +1,331 @@
+\begin{tikzpicture}[transform shape,scale=0.8,auto,thick,node distance=3cm,
+                    node/.style={draw,font=\sffamily\Large, scale=1}] 
+   
+  %Table nodes                           
+  \node[node] (HS) {
+  \begin{tabular}{ | l | }   
+  \hline                     
+  \textbf{Huidige situatie} \\
+  \hline  
+  Safe(No) \\
+  Money(H) \\
+  Employers(H)\\
+  \hline  
+\end{tabular}
+  };
+  
+  \node[node] (O1) [right=3cm of HS] {
+\begin{tabular}[b]{ | l | l | }   
+  \hline                     
+  \multicolumn{2}{|c|}{\textbf{O1}} \\ \hline  
+  If & Money(H) \\  \hline  
+ A & Bought(HW) \\ \hline  
+  D &   \\
+  \hline  
+\end{tabular}
+  };
+  
+  \node[node] (O3) [right=3cm of O1] {
+  \begin{tabular}[b]{ | l | l | }   
+  \hline                     
+  \multicolumn{2}{|c|}{\textbf{O3}} \\ \hline    
+  \multirow{3}{*}{If} & Money(H) \\ 
+  & Employers(H)\\
+  & Bought(HW) \\ \hline 
+ \multirow{3}{*}{A} & Develop(SW) \\
+  & Employers(M) \\
+  & Money(L) \\  \hline  
+  \multirow{2}{*}{D} &  Money(H) \\
+  & Employers(H) \\
+  \hline  
+\end{tabular}};
+
+  \node[node] (O2) [below=3cm of HS] {
+  \begin{tabular}[b]{ | l | l | }  \hline                      
+  \multicolumn{2}{|c|}{\textbf{O2}} \\ \hline  
+  \multirow{3}{*}{If} & Bought(HW) \\ 
+  & Employers(M)\\
+  & Develop(SW) \\ \hline 
+ \multirow{2}{*}{A} & Got(HW) \\
+  & Employers(L) \\ \hline  
+  \multirow{2}{*}{D} &  Bought(HW) \\
+  & Employers(M) \\
+  \hline  
+\end{tabular}
+  };
+  
+  \node[node] (O4) [below=3cm of O1] {
+  \begin{tabular}[b]{ | l | l | }   
+  \hline                     
+  \multicolumn{2}{|c|}{\textbf{O4}} \\ \hline  
+  \multirow{2}{*}{If} & Develop(SW) \\ 
+  & Got(HW)\\ \hline
+ A & Got(SW) \\ \hline  
+  D & Develop(SW)  \\
+  \hline  
+\end{tabular}
+  };
+  
+  \node[node] (O6) [below=1.5cm of O3] {
+  \begin{tabular}[b]{ | l | l | }   
+  \hline                     
+  \multicolumn{2}{|c|}{\textbf{O6}} \\ \hline  
+  \multirow{4}{*}{If} & Got(HW) \\ 
+  & Got(SW)\\
+  & Employers(L)\\
+  & Money(L) \\ \hline 
+ \multirow{2}{*}{A} & Got(C) \\
+ & Money(0) \\
+  & Employers(M) \\ \hline  
+  \multirow{2}{*}{D} &  Money(L) \\
+  & Employers(L) \\
+  \hline  
+\end{tabular}
+  };
+  
+  \node[node] (O7) [below=5cm of O4] {
+  \begin{tabular}[b]{ | l | l | }   
+  \hline                     
+  \multicolumn{2}{|c|}{\textbf{O7}} \\ \hline  
+  \multirow{3}{*}{If} & Safe(Al) \\ 
+  & Employers(L)\\
+  & Got(C)\\ \hline
+ \multirow{2}{*}{A} & Safe(Yes) \\ 
+ & Employers(H)\\ \hline  
+  \multirow{3}{*}{D} & Safe(Al)  \\
+  & Got(C)\\
+  & Employers(L) \\
+  \hline  
+\end{tabular}
+  };
+  
+   \node[node] (O5) [below=3cm of O2] {
+  \begin{tabular}[b]{ | l | l | }   
+  \hline                     
+  \multicolumn{2}{|c|}{\textbf{O5}} \\ \hline    
+  \multirow{5}{*}{If} & Safe(No) \\ 
+  & Got(HW)\\
+  & Employers(M)\\
+  & Got(C)\\
+  & Got(SW) \\ \hline 
+ \multirow{3}{*}{A} & Safe(Al) \\
+  & Employers(L) \\ \hline  
+  D &  Employers(M) \\
+  \hline  
+\end{tabular}
+  };
+  
+   \node[node] (GS) [below=2.5cm of O6] {
+  \begin{tabular}{ | l |}   
+  \hline                     
+  \textbf{Gewenste situatie}  \\
+  \hline  
+  Safe(Yes)  \\
+  Employers(H)  \\
+     \\
+  \hline  
+\end{tabular}
+  };
+ 
+ %Nodes for edges
+ %GS----------
+ \node[] (SO7) [below right=7.9cm and 0cm of O4] {.};
+ \node[] (SGS) [below left=3.5cm and 0.1cm of O6] {};
+ 
+ \node[] (EO7) [below right=8.5cm and 0cm of O4] {.};
+ \node[] (EGS) [below left=4.1cm and 0.1cm of O6] {};
+ 
+  %7----------
+ \node[] (SO5) [below right=7.2cm and 0cm of O2] {.};
+ \node[] (S2O7) [below left=6cm and 0.1cm of O4] {};
+ 
+ \node[] (EO5) [below right=7.8cm and 0cm of O2] {.};
+ \node[] (E2O7) [below left=6.6cm and 0.1cm of O4] {};
+ 
+ \node[] (CO7) [below right=7.2cm and 0cm of O4] {};
+ 
+ %5----------
+ \node[] (S2O5) [below left=4cm and 0cm of O2] {.};
+ \node[] (SHS) [below left=-1.9cm and 0cm of HS] {.};
+ 
+ \node[] (GHO5) [below left=4.6cm and 0.2cm of O2] {.};
+ \node[] (GHO2) [below left=-0.7cm and 7.5cm of O4] {.};
+ 
+ \node[] (GSO4) [below left=5.2cm and 0cm of O1] {.};
+ \node[] (GSO5) [below right=6.4cm and 0cm of O2] {};
+ 
+ \node[] (GCO6) [below left=-3.1cm and 0cm of O6] {.};
+ \node[] (GCO62) [below left=4.5cm and 0cm of O4] {};
+ \node[] (GCO5) [below right=5.8cm and 0cm of O2] {};
+ 
+ \node[] (EMO6) [below left=-1.8cm and 0cm of O6] {.};
+ \node[] (EMO62) [below right=4.3cm and 0cm of O4] {};
+ \node[] (EMO63) [below left=4.3cm and 0.8cm of O4] {};
+ \node[] (EMO5) [below right=5.2cm and 0cm of O2] {};
+ 
+  %6----------
+ \node[] (GS2O4) [below right=5.2cm and 0cm of O1] {.};
+ \node[] (GSO6) [below left=-5cm and 0cm of O6] {};
+
+ \node[] (MLO3) [below right=-1.9cm and 0cm of O3] {.};
+ \node[] (MLO6) [below right=-3.6cm and 0cm of O6] {}; 
+ 
+ \node[] (ELO2) [below right=-1.9cm and 0cm of O2] {.};
+ \node[] (ELO6) [below left=-3.2cm and 1.5cm of O6] {}; 
+ \node[] (ELO62) [below left=-4.4cm and 1.5cm of O6] {}; 
+ \node[] (ELO63) [below left=-4.4cm and 0cm of O6] {}; 
+ 
+ \node[] (GH2O2) [below right=-2.5cm and 0cm of O2] {.};
+ \node[] (GHO6) [above right=0.2cm and 2.8cm of O2] {.};
+ \node[] (GHO62) [below left=-7.2cm and 1.5cm of O6] {}; 
+ \node[] (GHO63) [below left=-5.6cm and 1.5cm of O6] {}; 
+ \node[] (GHO64) [below left=-5.6cm and 0cm of O6] {}; 
+ 
+  %4----------
+ \node[] (DO3) [below left=-3.2cm and 0cm of O3] {.};
+ \node[] (DO4) [below right=-2.5cm and 0cm of O4] {}; 
+ 
+ \node[] (GHO4) [below left=-1.9cm and 0cm of O4] {}; 
+
+  %2----------
+ \node[] (BHO2) [below right=-4.3cm and 0cm of O2] {.};
+ \node[] (BHO1) [below left=-1.2cm and 2.7cm of O1] {};
+ \node[] (BHO12) [below left=-1.2cm and 0cm of O1] {}; 
+ 
+ \node[] (EMO3) [below left=-2.5cm and 0cm of O3] {.};
+ \node[] (EMO2) [below right=-3.8cm and 0cm of O2] {};
+ \node[] (EMO23) [above right=2cm and 1cm of O2] {};
+ \node[] (EMO24) [below left=-0.85cm and 2.5cm of O3] {}; 
+ 
+ \node[] (DSO2) [below right=-3.1cm and 0cm of O2] {};
+ \node[] (DSO22) [above right=1.5cm and 2cm of O2] {};
+ \node[] (DSO23) [below left=-0.3cm and 0.5cm of O3] {}; 
+ 
+  %3----------
+ \node[] (MLO3) [below right=-1.9cm and 0cm of O3] {.};
+ \node[] (MLO6) [below right=-3.6cm and 0cm of O6] {}; 
+ 
+ \node[] (EHHS) [below right=-0.5cm and 0.2cm of HS] {};
+ \node[] (EHHS2) [below right=0.3cm and 3cm of HS] {};
+ \node[] (EHHS3) [below left=-1.3cm and 2.5cm of O3] {}; 
+ \node[] (EHO3) [below left=-4.2cm and 0cm of O3] {}; 
+ 
+ \node[] (MHHS2) [above right=0.4cm and 1cm of HS] {};
+ \node[] (MHO3) [below left=-5.1cm and 0cm of O3] {}; 
+ 
+  %1----------
+ \node[] (BO1) [below right=-1.2cm and 0.1cm of O1] {};
+ \node[] (BO3) [below left=-3.8cm and 0.1cm of O3] {}; 
+ 
+  %HS----------
+ \node[] (MHHS) [below right=-1.5cm and 0.1cm of HS] {};
+ \node[] (MHO1) [below left=-1.9cm and 0.1cm of O1] {}; 
+ 
+ %Threads----------
+  \node[] (TEMO2) [below right=-0.5cm and 0cm of O2] {};
+  
+  \node[] (TELO7) [below right=-0.6cm and 0cm of O7] {};
+  \node[] (TGCO7) [below left=-1.2cm and 0cm of O7] {};
+  
+  \node[] (TEMO5) [below right=-0.6cm and 0cm of O5] {};
+  
+  \node[] (TELO6) [below left=-0.6cm and 0cm of O6] {};
+  \node[] (TELO62) [below left=-2.5cm and 1.5cm of O7] {};
+  
+  \node[] (TDO4) [below right=-0.6cm and 0cm of O4] {};
+  
+  \node[] (TBO2) [below right=-1.2cm and 0cm of O2] {};
+  \node[] (TBO3) [below left=-3cm and 2.2cm of O3] {};
+  
+  \node[] (TMHO3) [below left=-1.2cm and 0cm of O3] {};
+  \node[] (TMHO1) [below left=-1.7cm and 1cm of O1] {};
+  
+  \node[] (TEHO3) [below left=-0.6cm and 0cm of O3] {};
+  \node[] (TEHO7) [below right=-3.2cm and 1.5cm of O7] {};
+   
+  %Arrows
+  \path[->,>=stealth',shorten >=1pt]
+  (SO7.center) edge node [above=0.3cm, pos=0.7]{B(O7,GS)} (SGS)
+  (EO7.center) edge node [below=0.5cm]{B(O7,GS)} (EGS)
+  
+  (SO5.center) edge node [above=0.6cm]{B(O5,O7)} (S2O7)
+  (EO5.center) edge node [below=0.8cm, pos=0.4]{B(O5,O7)} (E2O7) 
+  (GCO6.center) edge node [right, pos=0.7]{B(O6,O7)} (CO7.center)
+  
+  (SHS.center) edge node [left, pos=0.3]{B(HS,O5)}(S2O5.center)  
+  (GHO2.center) edge node [left]{B(O2,O5)}(GHO5.center)  
+  (GSO4.center) edge node [right, pos=0.3]{B(O4,O5)}(GSO5.center)  
+  (GCO62.center) edge node {}(GCO5.center)  
+  (EMO63.center) edge node {}(EMO5.center)
+  
+  (GS2O4.center) edge node [above]{B(O4,O6)} (GSO6)  
+  (MLO3.center) edge node [left, pos=0.4]{B(O3,O6)} (MLO6)
+  (ELO62.center) edge node {} (ELO63)
+  (GHO63.center) edge node {} (GHO64)
+  
+  (DO3.center) edge node [right, pos=0.65]{B(O3,O4)}(DO4.center)
+  (GH2O2.center) edge node [below=0.2cm, pos=0.4]{B(O2,O4)}(GHO4.center)
+  (EMO23.center) edge node {}(EMO2.center) 
+  (DSO22.center) edge node {}(DSO2.center)
+  
+  (EHHS3.center) edge node {}(EHO3.center)
+  (MHHS2.center) edge node [above]{B(HS,O3)}(MHO3.center)
+  
+  (BHO1.center) edge node [left]{B(O1,O2)}(BHO2.center)  
+  
+  (BO1.center) edge node [above=0.2cm, pos=0.4]{B(O1,O3)}(BO3.center)
+  
+  (MHHS.center) edge node [above]{B(HS,O1)}(MHO1.center)
+   ;
+   
+   %Lines
+   \path[every node/.style={font=\sffamily\small}]
+  (GCO6.center) edge node [above=0.3cm]{B(O6,O5)} (GCO62.center)
+  
+  (EMO6.center) edge node [left,pos=0.7]{B(O6,O5)}  (EMO62.center)
+  (EMO62.center) edge node {} (EMO63.center)
+  
+  (ELO62.center) edge node {} (ELO6.center)
+  (ELO6.center) edge node [below=0.1cm, pos=0.4]{B(O2,O6)} (ELO2.center)
+  
+   (GH2O2.center) edge node {} (GHO6.center)
+   (GHO6.center) edge node [above]{B(O2,O6)} (GHO62.center)
+   (GHO62.center) edge node {} (GHO63.center)
+  
+  (BHO12.center) edge node {} (BHO1.center)
+  
+  (EMO23.center) edge node [above, pos=0.1]{B(O3,O2)} (EMO24.center)
+  (EMO24.center) edge node {} (EMO3.center)
+  
+  (DSO22.center) edge node [below, pos=0.2]{B(O3,O2)} (DSO23.center)
+  (DSO23.center) edge node {} (DO3.center)
+  
+  (EHHS2.center) edge node [above=-0.1cm]{B(HS,O3)} (EHHS3.center)
+  (EHHS.center) edge node {} (EHHS2.center)
+  
+  (MHHS2.center) edge node {} (MHHS.center)
+   
+  ;
+  
+  %Threats Arrows
+  \path[->,>=stealth',shorten >=1pt, dashed, red]
+  (TEMO2.center) edge node {} (EMO63.center)
+  
+  (TELO7.center) edge node {} (ELO6.center)
+  (TGCO7.center) edge node {} (GCO62.center)
+  
+  (TEMO5.center) edge node {} (EMO23.center)
+  
+  (TELO6.center) edge node {} (TELO62.center)
+  
+  (TDO4.center) edge node {} (DSO23.center)
+  
+  (TBO2.center) edge node {} (TBO3.center)
+  
+  (TMHO3.center) edge node {} (TMHO1.center)
+  
+  (TEHO3.center) edge node {} (TEHO7.center)
+  
+  ;
+  
+\end{tikzpicture}
