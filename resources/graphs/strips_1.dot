@@ -1,35 +1,5 @@
 digraph structs {
  node [shape=plaintext];
- example [label=
-< <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="0">
-    <tr>
-        <td colspan="2">NAME1</td>
-    </tr>
-    <tr>
-        <td rowspan="3">IF</td>
-        <td>test1</td>
-    </tr>
-    <tr>
-        <td PORT="if">test2</td>
-    </tr>
-    <tr>
-        <td>test3</td>
-    </tr>
-    <tr>
-        <td rowspan="2">ADD</td>
-        <td PORT="add">test4</td>
-    </tr>
-    <tr>
-        <td>test5</td>
-    </tr>
-    <tr>
-        <td>DEL</td>
-        <td PORT="del">test6</td>
-    </tr>
-</TABLE>>]; 
-    
-
-
 i [label=
 < <table border="0" cellborder="1" cellspacing="0" cellpadding="0">
     <tr>
@@ -59,15 +29,15 @@ f [label=
         <td port="name" colspan="2">EINDE</td>
     </tr>
     <tr>
-        <td port="add_0" rowspan="2">IF</td>
-        <td port="add_1">In(Kamer)</td>
+        <td port="if_0" rowspan="2">IF</td>
+        <td port="if_1">In(Kamer)</td>
     </tr>
     <tr>
-        <td port="add_2">Heeft(Maaltijd)</td>
+        <td port="if_2">Heeft(Maaltijd)</td>
     </tr>
     <tr>
-        <td port="if_0">ADD</td>
-        <td port="if_1">-</td>
+        <td port="add_0">ADD</td>
+        <td port="add_1">-</td>
     </tr>
     <tr>
         <td port="del_0">DEL</td>
@@ -152,17 +122,119 @@ ne [label=
     </tr>
 </table>>]; 
 
+bs [label=
+< <table border="0" cellborder="1" cellspacing="0" cellpadding="0">
+    <tr>
+        <td port="name" colspan="2">BS</td>
+    </tr>
+    <tr>
+        <td port="if_0" rowspan="3">IF</td>
+        <td port="if_1">In(Keuken)</td>
+    </tr>
+    <tr>
+        <td port="if_2">Vrij(Pan)</td>
+    </tr>
+    <tr>
+        <td port="if_3">Heeft(RauwSpek)</td>
+    </tr>
+    <tr>
+        <td port="add_0">ADD</td>
+        <td port="add_1">Bakt(Spek)</td>
+    </tr>
+    <tr>
+        <td port="del_0" rowspan="2">DEL</td>
+        <td port="del_1">Heeft(RauwSpek)</td>
+    </tr>
+    <tr>
+        <td port="del_2">Vrij(Pan)</td>
+    </tr>
+</table>>]; 
 
+be [label=
+< <table border="0" cellborder="1" cellspacing="0" cellpadding="0">
+    <tr>
+        <td port="name" colspan="2">BE</td>
+    </tr>
+    <tr>
+        <td port="if_0" rowspan="3">IF</td>
+        <td port="if_1">In(Keuken)</td>
+    </tr>
+    <tr>
+        <td port="if_2">Vrij(Pan)</td>
+    </tr>
+    <tr>
+        <td port="if_3">Heeft(RauwEi)</td>
+    </tr>
+    <tr>
+        <td port="add_0">ADD</td>
+        <td port="add_1">Heeft(KlaarEi)</td>
+    </tr>
+    <tr>
+        <td port="del_0">DEL</td>
+        <td port="del_1">Heeft(RauwEi)</td>
+    </tr>
+</table>>]; 
 
+dso [label=
+< <table border="0" cellborder="1" cellspacing="0" cellpadding="0">
+    <tr>
+        <td port="name" colspan="2">DSO</td>
+    </tr>
+    <tr>
+        <td port="if_0" rowspan="2">IF</td>
+        <td port="if_1">In(Keuken)</td>
+    </tr>
+    <tr>
+        <td port="if_2">Bakt(Spek)</td>
+    </tr>
+    <tr>
+        <td port="add_0" rowspan="2">ADD</td>
+        <td port="add_1">Heeft(KlaarSpek)</td>
+    </tr>
+    <tr>
+        <td port="add_2">Vrij(Pan)</td>
+    </tr>
+    <tr>
+        <td port="del_0">DEL</td>
+        <td port="del_1">Bakt(Spek)</td>
+    </tr>
+</table>>]; 
 
+lob [label=
+< <table border="0" cellborder="1" cellspacing="0" cellpadding="0">
+    <tr>
+        <td port="name" colspan="2">LOB</td>
+    </tr>
+    <tr>
+        <td port="if_0" rowspan="3">IF</td>
+        <td port="if_1">In(Keuken)</td>
+    </tr>
+    <tr>
+        <td port="if_2">Heeft(KlaarEi)</td>
+    </tr>
+    <tr>
+        <td port="if_3">Heeft(KlaarSpek)</td>
+    </tr>
+    <tr>
+        <td port="add_0">ADD</td>
+        <td port="add_1">Heeft(Maaltijd)</td>
+    </tr>
+    <tr>
+        <td port="del_0" rowspan="2">DEL</td>
+        <td port="del_1">Heeft(KlaarEi)</td>
+    </tr>
+    <tr>
+        <td port="del_2">Heeft(KlaarSpek)</td>
+    </tr>
+</table>>]; 
 
 
 
  between[style=invis,shape=point];
  
- example:add:e -> between[arrowhead=none, color=green];
- between -> t:if_0:w[color = green];
+ i:add_1:e -> between[arrowhead=none, color=green];
+ between -> f:if_1:w[color = green];
 
- t:del_1:e -> between[color=red];
+ h:del_1:e -> between[color=red];
 
 }
