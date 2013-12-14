@@ -1,7 +1,6 @@
 digraph structs {
 
-splines = spline
-splines = true
+//splines = ortho
 
 node [shape=plaintext];
 i [
@@ -239,7 +238,7 @@ lob [label=
 </table>>]; 
 
 
-node [style = invis, shape = point];
+node [/*style = invis,*/ shape = point];
 bet_i_f;    
 bet_i_be;  
 bet_h_ns; 
@@ -302,14 +301,14 @@ t:del_1:e   -> bet_h_be;
 t:del_1:e   -> bet_h_dso; 
 t:del_1:e   -> bet_h_lob; 
 
-{rank=source; "i"}
+/*{rank=source; "i"}
 {rank=same; "h"}
 {rank=same; "ns" "ne"}
 {rank=same; "bs" "be"}
 {rank=same; "dso"}
 {rank=same; "lob"}
 {rank=same; "t"}
-{rank=sink; "f"}
+{rank=sink; "f"}*/
 
 
 
