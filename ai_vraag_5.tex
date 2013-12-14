@@ -42,11 +42,15 @@ de vijand van je beste vriend & VA\\
 
 
 \section{Modeloplossing}
-We vertalen nu alle mogelijke gegevens uit de opgave. De eerste drie beweringen zijn impliciet (en evident), maar moeten zeker worden geformuleerd.
+We vertalen nu alle mogelijke gegevens uit de opgave. De eerste fier beweringen zijn impliciet (en evident), maar moeten zeker worden geformuleerd.
 \begin{itemize}
 \item De opgesomde caf\'e's zijn caf\'e's en je beste vriend en zijn vijand zijn personen.
 \[ C(CM)\wedge C(AG)\wedge C(RC)\wedge C(C3)\wedge C(DK)\wedge C(DG) \]
 \[ P(BV) \wedge P(VA)\]
+\item De caf\'es staan in volgorde.
+\[
+L(CM,AG) \wedge L(AG,RC) \wedge L(RC,C3) \wedge L(DK,DG) 
+\]
 \item Als iemand je in een caf\'e heeft gezien ben je daar geweest.
 \[
 \forall c: (C(c) \rightarrow ((\exists p : P(p) \wedge G(p,c)) \Rightarrow Gw(c)))
@@ -67,8 +71,9 @@ G(BV,RC)
 \[
 \exists c: (C(c) \wedge G(BV,c)) \Rightarrow (\exists c': C(c') \wedge Gw(c') \wedge c \neq c')
 \]
-\item Je ziet de volgende dag op facebook een foto van jezelf met de aartsvijand van je beste vriend in een caf\'e dat je niet herkent. 
+\item Je ziet de volgende dag op facebook een foto van jezelf met de aartsvijand van je beste vriend in een caf\'e dat je niet herkent. Omdat je het caf\'e niet herkent kan het niet \'e\'en van de eerste caf\'e's geweest zijn. 
 \[
+\exists c: (C(c) \wedge G(VA,c) \wedge c\neq CM \wedge c \neq AG)
 \]
 \item Je weet dat je beste vriend en zijn vijand nooit samen met jou op caf\'e zouden gaan.
 \[
