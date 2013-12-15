@@ -248,7 +248,6 @@ bet_h_be;
 bet_h_dso;
 bet_h_lob;
 bet_dso_bs;
-bet_dso_be;
 
 i:add_1:e   -> bet_i_f      [arrowhead = none, color = green];
 bet_i_f     -> f:if_0:w     [color = green];
@@ -284,8 +283,7 @@ be:add_1:e  -> lob:if_0:w   [color = green];
 
 dso:add_1:e -> lob:if_0:w   [color = green];
 dso:add_2:e -> bet_dso_bs   [arrowhead = none, color = green];
-bet_dso_bs  -> bet_dso_be   [arrowhead = none, color = green];
-bet_dso_be  -> be:if_0:w    [color = green];
+bet_dso_bs  -> be:if_0:w    [color = green];
 
 lob:add_1:e -> f:if_0:w     [color = green];
 
@@ -293,7 +291,7 @@ lob:add_1:e -> f:if_0:w     [color = green];
 edge [color = red];
 h:del_1:e   -> bet_i_f;
 bs:del_2:e  -> bet_i_be;
-bs:del_2:e  -> bet_dso_be;
+bs:del_2:e  -> bet_dso_bs;
 t:del_1:e   -> bet_h_ns; 
 t:del_1:e   -> bet_h_ne; 
 t:del_1:e   -> bet_h_bs; 
