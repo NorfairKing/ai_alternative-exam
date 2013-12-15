@@ -13,46 +13,52 @@ BE;
 DSO;
 LOB;
 
-BEGIN -> EINDE;
-BEGIN -> HEEN;
-BEGIN -> BE;
-BEGIN -> BS;
 
-HEEN -> BEGIN; //LOOP
-EINDE -> HEEN; //LOOP
-HEEN -> TERUG
-EINDE -> HEEN; //LOOP
+//edge;
+
+//BEGIN
+BEGIN -> HEEN;
+BEGIN -> BS;
+BEGIN -> BE
+
+//HEEN
+HEEN -> TERUG;
 HEEN -> NS;
 HEEN -> NE;
 HEEN -> BS;
 HEEN -> BE;
 HEEN -> DSO;
-HEEN -> LOB
+HEEN -> LOB;
 
-TERUG -> EINDE
-TERUG -> HEEN; //LOOP?
+//TERUG
+TERUG -> EINDE;
 NS -> TERUG;
-NE -> TERUG
+NE -> TERUG;
 BS -> TERUG;
 BE -> TERUG;
 DSO -> TERUG;
-LOB -> TERUG
+LOB -> TERUG;
 
+//NS
 NS -> BS;
 
+//NE
 NE -> BE;
 
+//BS
 BS -> DSO;
-BE -> BS;
 
+//BE
 BE -> LOB;
 
-DSO -> BS;
-DSO -> BE;
+//DSO
+DSO -> LOB;
 
+//LOB
 LOB -> EINDE;
 
+//EINDE
+
+
 overlap=false
-
-
 }
