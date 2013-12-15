@@ -19,6 +19,7 @@ Als student krijg je tijdens het werken wel eens zin in spek met eieren. Als lui
     del & -\\
     \hline
 \end{tabular}
+\hspace{0.25 cm}
 \begin{tabular}{|c|c|}
     \multicolumn{2}{c}{F}\\
     \hline
@@ -51,6 +52,7 @@ De student kan naar de keuken wandelen en terug. In figuur \ref{keuken} staan de
     del & In(Kamer)\\
     \hline
 \end{tabular}
+\hspace{0.25cm}
 \begin{tabular}{|c|c|}
     \multicolumn{2}{c}{T}\\
     \hline
@@ -78,6 +80,7 @@ In de keuken kan de student koken en alle overeenkomstige acties daarvoor staan 
     del & -\\
     \hline
 \end{tabular}
+\hspace{0.25cm}
 \begin{tabular}{|c|c|}
     \multicolumn{2}{c}{NaamSpek (NS)}\\
     \hline
@@ -101,6 +104,7 @@ In de keuken kan de student koken en alle overeenkomstige acties daarvoor staan 
     del & Heeft(RauwEi)\\
     \hline
 \end{tabular}
+\hspace{0.25cm}
 \begin{tabular}{|c|c|}
     \multicolumn{2}{c}{BakSpek (BS)}\\
     \hline
@@ -127,6 +131,7 @@ In de keuken kan de student koken en alle overeenkomstige acties daarvoor staan 
     del & Bakt(Spek)\\
     \hline
 \end{tabular}
+\hspace{0.25cm}
 \begin{tabular}{|c|c|}
     \multicolumn{2}{c}{LegOpBord(LOB)}\\
     \hline
@@ -149,11 +154,14 @@ In de keuken kan de student koken en alle overeenkomstige acties daarvoor staan 
 \subsection{Establishes/Threathens-graaf}
 \begin{figure}[p]
 \centering
-\caption{Establishes/Threathens-graaf}
+\caption{Establishes/Threatens-graaf}
 \label{strips_1}
-\includegraphics[scale=0.3]{resources/graphs/strips_1.png}
+\includegraphics[scale=0.25]{resources/graphs/strips_1.png}
 \end{figure}
+In het eerste deel van de oplossing stellen we de graaf op met alle "establishes" en "threatens" relaties. Dit gebeurt als volgt. We beginnen met de begin en de eindsituatie te tekenen. Nu gaan we alle precondities voor de eindsituatie af. Voor elke operatie die we toevoegen gaan we diepte eerst, recursief alle precondities af. $In(Kamer)$ is al waar bij het begin. We proberen aan $Heeft(Maaltijd)$ te voldoen door $LOB$ toe te voegen. Om aan de preconditities van $LOB$ te voldoen voegen we eerst $HEEN$ toe (om aan $In(Keuken)$ te voldoen). We zien nu dat $DEL In(Kamer)$ van $HEEN$ $ADD In(Kamer)$ bedreigt. Dit betekent dat $HEEN$ ofwel voor het begin zou moeten gebeuren, ofwel na het einde. Omdat dit beide niet kan verwijderen we de "establishes" boog van $BEGIN$ naar $EINDE$ (Deze boog is wel getekend voor de duidelijkheid). Deze procedure zetten we verder tot aan alle precondities van $EINDE$ voldaan is en we een graaf bekomen zoals in figuur \ref{strips_1} \footnote{Ter informatie: De uiteenzetting van de procedure is niet gevraagd.}.
 
+In de graaf van figuure \ref{strips_1} zijn de groene bogen de "establishes" bogen. Ze houden in dat de eigenschap bij het vertrekpunt ervoor zorgt dat aan een eigenschap bij het eindpunt voldaan is. De operatie waar de boog begint moet dus voor de operatie aan het eind van de boog plaatsvinden.
+De De rode bogen zijn de "threatens" bogen. Deze betekenen dat de eigenschap bij het vertrekpunt de eigenschap bij het vertrekpunt van de boog waar hij naar wijst ongedaan maakt. De operatie waar de rode boog begint moet dus ofwel voor het vertrekpunt van de boog waar hij naar wijst plaatsvinden, ofwel na het eindpunt.
 \subsection{Before-graaf}
 \begin{figure}[H]
 \centering
@@ -161,5 +169,26 @@ In de keuken kan de student koken en alle overeenkomstige acties daarvoor staan 
 \label{strips_2}
 \includegraphics[scale=0.3]{resources/graphs/strips_2.png}
 \end{figure}
+In figuur \ref{strips_2} is de graaf getekend met alle "before"
+- relaties. We kunnen nu de mogelijke plannen opstellen. 
+
+In elk plan moeten we eerst naar de keuken gaan en op het einde het ei en het spek op een bord leggen, waarna we terug naar de kamen gaan. Er zijn echter een aantal mogelijke plannen omdat we daartussen kunnen koken in een aantal mogelijke volgorden.
+
+Het is makkelijk in te zien dat het niet uitmaakt of we eerst het ei bakken en daarna het spek. Bovendien maakt het niet uit of we eerst het ei uit de koelkast nemen of eerst het spek. We kunnen zelfs eerst het ei uit de koelkast nemen, dan het spek, eerst het spek bakken, en daarna pas het ei. Alle mogelijkheden zijn hieronder samengevat.
+\[
+\begin{array}{c}
+BEGIN \rightarrow HEEN \rightarrow NE \rightarrow NS \rightarrow BE \rightarrow BS \rightarrow DSO\rightarrow LBO \rightarrow TERUG \rightarrow EINDE\\
+BEGIN \rightarrow HEEN \rightarrow NE \rightarrow NS \rightarrow BS \rightarrow BE \rightarrow DSO\rightarrow LBO \rightarrow TERUG \rightarrow EINDE\\
+BEGIN \rightarrow HEEN \rightarrow NE \rightarrow NS \rightarrow BS \rightarrow DSO \rightarrow BE\rightarrow LBO \rightarrow TERUG \rightarrow EINDE\\
+BEGIN \rightarrow HEEN \rightarrow NE \rightarrow BE \rightarrow NS \rightarrow BS \rightarrow DSO\rightarrow LBO \rightarrow TERUG \rightarrow EINDE\\
+BEGIN \rightarrow HEEN \rightarrow NS \rightarrow NE \rightarrow BE \rightarrow BS \rightarrow DSO\rightarrow LBO \rightarrow TERUG \rightarrow EINDE\\
+BEGIN \rightarrow HEEN \rightarrow NS \rightarrow NE \rightarrow BS \rightarrow BE \rightarrow DSO\rightarrow LBO \rightarrow TERUG \rightarrow EINDE\\
+BEGIN \rightarrow HEEN \rightarrow NS \rightarrow NE \rightarrow BS \rightarrow DSO \rightarrow BE\rightarrow LBO \rightarrow TERUG \rightarrow EINDE\\
+BEGIN \rightarrow HEEN \rightarrow NS \rightarrow BS \rightarrow NE \rightarrow BE \rightarrow DSO\rightarrow LBO \rightarrow TERUG \rightarrow EINDE\\
+BEGIN \rightarrow HEEN \rightarrow NS \rightarrow BS \rightarrow NE \rightarrow DSO \rightarrow BE\rightarrow LBO \rightarrow TERUG \rightarrow EINDE\\
+BEGIN \rightarrow HEEN \rightarrow NS \rightarrow BS \rightarrow DSO \rightarrow NE \rightarrow BE\rightarrow LBO \rightarrow TERUG \rightarrow EINDE\\
+\end{array}
+\]
+Het eerste mogelijke plan houdt in dat je eerst naar de keuken gaat, vervolgens in volgorde eerst het ei en het spek uit de koelkast neemt, daarna in volgorde het ei bakt, het spek bakt en het spek omdraait. Tenslotte leg je zowel het ei als het spek op een bord en ga je terug naar je kamer.
 
 \end{document}
