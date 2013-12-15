@@ -251,7 +251,7 @@ bet_dso_be;
 edge [color = green];
 bet_i_f     -> f:if_0:w;     
 i:add_1:e   -> h:if_0:w;
-bet_i_bs    -> bs:if_0:w;
+i:add_1:e   -> bs:if_0:w;
 i:add_2:e   -> be:if_0:w;
 bet_h_ns    -> ns:if_0:w;
 bet_h_ne    -> ne:if_0:w;
@@ -273,7 +273,6 @@ lob:add_1:e -> f:if_0:w;
 
 edge [arrowhead = none, color = green];
 i:add_1:e   -> bet_i_f;    
-i:add_2:e   -> bet_i_bs;    
 h:add_1:e   -> bet_h_ns;    
 h:add_1:e   -> bet_h_ne;    
 h:add_1:e   -> bet_h_bs;    
@@ -284,16 +283,15 @@ t:add_1:e   -> bet_t_f;
 dso:add_2:e -> bet_dso_be;
 
 edge [arrowhead = normal, color = red];
-h:del_1:e   -> bet_i_f;
-h:del_1:e   -> bet_t_f;
-bs:del_2:e  -> bet_i_bs;
-bs:del_2:e  -> bet_dso_be;
-t:del_1:e   -> bet_h_ns; 
-t:del_1:e   -> bet_h_ne; 
-t:del_1:e   -> bet_h_bs; 
-t:del_1:e   -> bet_h_be; 
-t:del_1:e   -> bet_h_dso; 
-t:del_1:e   -> bet_h_lob; 
+h:del_1:e   -> bet_i_f      [label = <<font color="red">B(H,I)&or;B(F,H)</font>>];
+h:del_1:e   -> bet_t_f      [label = <B(H,T)<font color="red">&or;B(F,H)</font>>];
+bs:del_2:e  -> bet_dso_be   [label = <<font color="red">B(BS,DSO)&or;B(BE,BS)</font>>];
+t:del_1:e   -> bet_h_ns     [label = <<font color="red">B(T,H)&or;</font>B(NS,T)>]; 
+t:del_1:e   -> bet_h_ne     [label = <<font color="red">B(T,H)&or;</font>B(NE,T)>]; 
+t:del_1:e   -> bet_h_bs     [label = <<font color="red">B(T,H)&or;</font>B(BS,T)>]; 
+t:del_1:e   -> bet_h_be     [label = <<font color="red">B(T,H)&or;</font>B(BE,T)>]; 
+t:del_1:e   -> bet_h_dso    [label = <<font color="red">B(T,H)&or;</font>B(DSO,T)>]; 
+t:del_1:e   -> bet_h_lob    [label = <<font color="red">B(T,H)&or;</font>B(LOB,T)>]; 
 
 
 }
