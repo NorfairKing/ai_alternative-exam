@@ -1,6 +1,4 @@
-digraph structs {
-
-//splines = ortho
+digraph STRIPS_1 {
 
 node [shape=plaintext];
 i [
@@ -240,7 +238,7 @@ lob [label=
 
 node [style = invis, shape = point];
 bet_i_f;    
-bet_i_be;  
+bet_i_bs;  
 bet_h_ns; 
 bet_h_ne;
 bet_h_bs;
@@ -253,7 +251,7 @@ bet_dso_be;
 edge [color = green];
 bet_i_f     -> f:if_0:w;     
 i:add_1:e   -> h:if_0:w;
-bet_i_be    -> bs:if_0:w;
+bet_i_bs    -> bs:if_0:w;
 i:add_2:e   -> be:if_0:w;
 bet_h_ns    -> ns:if_0:w;
 bet_h_ne    -> ne:if_0:w;
@@ -275,7 +273,7 @@ lob:add_1:e -> f:if_0:w;
 
 edge [arrowhead = none, color = green];
 i:add_1:e   -> bet_i_f;    
-i:add_2:e   -> bet_i_be;    
+i:add_2:e   -> bet_i_bs;    
 h:add_1:e   -> bet_h_ns;    
 h:add_1:e   -> bet_h_ne;    
 h:add_1:e   -> bet_h_bs;    
@@ -288,7 +286,7 @@ dso:add_2:e -> bet_dso_be;
 edge [arrowhead = normal, color = red];
 h:del_1:e   -> bet_i_f;
 h:del_1:e   -> bet_t_f;
-bs:del_2:e  -> bet_i_be;
+bs:del_2:e  -> bet_i_bs;
 bs:del_2:e  -> bet_dso_be;
 t:del_1:e   -> bet_h_ns; 
 t:del_1:e   -> bet_h_ne; 

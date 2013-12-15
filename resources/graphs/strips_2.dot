@@ -1,0 +1,58 @@
+digraph STRIPS_2 {
+node [shape = box];
+BEGIN;
+EINDE;
+
+node [shape = ellipse];
+HEEN;
+TERUG;
+NS;
+NE;
+BS;
+BE;
+DSO;
+LOB;
+
+BEGIN -> EINDE;
+BEGIN -> HEEN;
+BEGIN -> BE;
+BEGIN -> BS;
+
+HEEN -> BEGIN; //LOOP
+EINDE -> HEEN; //LOOP
+HEEN -> TERUG
+EINDE -> HEEN; //LOOP
+HEEN -> NS;
+HEEN -> NE;
+HEEN -> BS;
+HEEN -> BE;
+HEEN -> DSO;
+HEEN -> LOB
+
+TERUG -> EINDE
+TERUG -> HEEN; //LOOP?
+NS -> TERUG;
+NE -> TERUG
+BS -> TERUG;
+BE -> TERUG;
+DSO -> TERUG;
+LOB -> TERUG
+
+NS -> BS;
+
+NE -> BE;
+
+BS -> DSO;
+BE -> BS;
+
+BE -> LOB;
+
+DSO -> BS;
+DSO -> BE;
+
+LOB -> EINDE;
+
+overlap=false
+
+
+}
