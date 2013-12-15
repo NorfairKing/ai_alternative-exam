@@ -238,7 +238,7 @@ lob [label=
 </table>>]; 
 
 
-node [/*style = invis,*/ shape = point];
+node [style = invis, shape = point];
 bet_i_f;    
 bet_i_be;  
 bet_h_ns; 
@@ -247,69 +247,55 @@ bet_h_bs;
 bet_h_be;
 bet_h_dso;
 bet_h_lob;
-bet_dso_bs;
+bet_t_f;
+bet_dso_be;
 
-i:add_1:e   -> bet_i_f      [arrowhead = none, color = green];
-bet_i_f     -> f:if_0:w     [color = green];
+edge [color = green];
+bet_i_f     -> f:if_0:w;     
+i:add_1:e   -> h:if_0:w;
+bet_i_be    -> bs:if_0:w;
+i:add_2:e   -> be:if_0:w;
+bet_h_ns    -> ns:if_0:w;
+bet_h_ne    -> ne:if_0:w;
+bet_h_bs    -> bs:if_0:w;
+bet_h_be    -> be:if_0:w;
+bet_h_dso   -> dso:if_0:w;
+bet_h_lob   -> lob:if_0:w;
+h:add_1:e   -> t:if_0:w;
+bet_t_f     -> f:if_0:w;
+t:add_1:e   -> h:if_0:w;
+ns:add_1:e  -> bs:if_0:w;
+ne:add_1:e  -> be:if_0:w;
+bs:add_1:e  -> dso:if_0:w;
+be:add_1:e  -> lob:if_0:w;
+dso:add_2:e -> bs:if_0:w;
+dso:add_1:e -> lob:if_0:w;
+bet_dso_be  -> be:if_0:w;
+lob:add_1:e -> f:if_0:w;
 
-i:add_2:e   -> bet_i_be     [arrowhead = none, color = green];
-bet_i_be    -> bs:if_0:w    [color = green];
+edge [arrowhead = none, color = green];
+i:add_1:e   -> bet_i_f;    
+i:add_2:e   -> bet_i_be;    
+h:add_1:e   -> bet_h_ns;    
+h:add_1:e   -> bet_h_ne;    
+h:add_1:e   -> bet_h_bs;    
+h:add_1:e   -> bet_h_be;   
+h:add_1:e   -> bet_h_dso;   
+h:add_1:e   -> bet_h_lob;   
+t:add_1:e   -> bet_t_f;  
+dso:add_2:e -> bet_dso_be;
 
-i:add_2:e   -> be:if_0:w    [color = green];
-
-h:add_1:e   -> bet_h_ns     [arrowhead = none, color = green];
-bet_h_ns    -> ns:if_0:w    [color = green];
-h:add_1:e   -> bet_h_ne     [arrowhead = none, color = green];
-bet_h_ne    -> ne:if_0:w    [color = green];
-h:add_1:e   -> bet_h_bs     [arrowhead = none, color = green];
-bet_h_bs    -> bs:if_0:w    [color = green];
-h:add_1:e   -> bet_h_be     [arrowhead = none, color = green];
-bet_h_be    -> be:if_0:w    [color = green];
-h:add_1:e   -> bet_h_dso    [arrowhead = none, color = green];
-bet_h_dso   -> dso:if_0:w   [color = green];
-h:add_1:e   -> bet_h_lob    [arrowhead = none, color = green];
-bet_h_lob   -> lob:if_0:w   [color = green];
-
-h:add_1:e   -> t:if_0:w     [color = green]
-t:add_1:e   -> f:if_0:w     [color = green]
-
-ns:add_1:e  -> bs:if_0:w    [color = green];
-
-ne:add_1:e  -> be:if_0:w    [color = green];
-
-bs:add_1:e  -> dso:if_0:w   [color = green];
-
-be:add_1:e  -> lob:if_0:w   [color = green];
-
-dso:add_1:e -> lob:if_0:w   [color = green];
-dso:add_2:e -> bet_dso_bs   [arrowhead = none, color = green];
-bet_dso_bs  -> be:if_0:w    [color = green];
-
-lob:add_1:e -> f:if_0:w     [color = green];
-
-
-edge [color = red];
+edge [arrowhead = normal, color = red];
 h:del_1:e   -> bet_i_f;
+h:del_1:e   -> bet_t_f;
 bs:del_2:e  -> bet_i_be;
-bs:del_2:e  -> bet_dso_bs;
+bs:del_2:e  -> bet_dso_be;
 t:del_1:e   -> bet_h_ns; 
 t:del_1:e   -> bet_h_ne; 
 t:del_1:e   -> bet_h_bs; 
 t:del_1:e   -> bet_h_be; 
 t:del_1:e   -> bet_h_dso; 
 t:del_1:e   -> bet_h_lob; 
-
-/*{rank=source; "i"}
-{rank=same; "h"}
-{rank=same; "ns" "ne"}
-{rank=same; "bs" "be"}
-{rank=same; "dso"}
-{rank=same; "lob"}
-{rank=same; "t"}
-{rank=sink; "f"}*/
-
-
-
 
 
 }
