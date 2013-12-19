@@ -41,6 +41,7 @@ de vijand van je beste vriend & VA\\
 
 
 \section{Modeloplossing}
+\subsection{Vertaling}
 We vertalen nu alle mogelijke gegevens uit de opgave. De eerste vier beweringen zijn impliciet (en evident), maar moeten zeker worden geformuleerd.
 \begin{itemize}
 \item De opgesomde caf\'e's zijn caf\'e's en je beste vriend en zijn vijand zijn personen.
@@ -84,7 +85,9 @@ Nu proberen we het volgende te bewijzen.
 Gw(DK)
 \]
 
-\subsection{Normaalvorm <TODO NAAM>}
+\subsection{Implicatieve normaalvorm}
+We zetten nu alle vertaalde formules nu om naar implicatieve normaalvorm.
+Wanneer kwantoren weggelaten kunnen worden, worden ze eerst in het rood gezet. De bekomen logische zinnen (dit kunnen er meerdere zijn) worden achteraf nog samengevat.
 \begin{itemize}
 \item $C(CM)\wedge C(AG)\wedge C(RC)\wedge C(C3)\wedge C(DK)$
 \[
@@ -199,8 +202,8 @@ C(c) \leftarrow c = A \wedge G(BV,c)\\
 \begin{array}{c c c}
 C(B) &\leftarrow& True\\
 G(VA,B) &\leftarrow& True\\
-false &\leftarrow& B = CM\\
-false &\leftarrow& B = AG\\
+False &\leftarrow& B = CM\\
+False &\leftarrow& B = AG\\
 \end{array}
 \right.
 \]
@@ -224,9 +227,9 @@ False \leftarrow C(c) \wedge G(VA,c) \wedge G(BV,c)
 False \leftarrow Gw(DK)
 \]
 \end{itemize}
-\textbf{Samengevat:}
+De volledige verzameling van alle hypothesen en de negatie van hetgeen te bewijzen valt zien we in figuur \ref{samengevat}.
+\begin{figure}[H]
 \[
-\left\{
 \begin{array}{c c c}
 C(CM) &\leftarrow& True\\
 C(AG) &\leftarrow& True\\
@@ -247,12 +250,14 @@ Gw(A) &\leftarrow&  C(c) \wedge  G(BV,c)\\
 C(c) &\leftarrow& c = A \wedge G(BV,c)\\
 C(B) &\leftarrow& True\\
 G(VA,B) &\leftarrow& True\\
-false &\leftarrow& B = CM\\
-false &\leftarrow& B = AG\\
+False &\leftarrow& B = CM\\
+False &\leftarrow& B = AG\\
 False &\leftarrow& C(c) \wedge G(VA,c) \wedge G(BV,c)\\
 False &\leftarrow& Gw(DK)\\
 \end{array}
-\right.
 \]
+\caption{Samengevat}
+\label{samengevat}
+\end{figure}
 
 \end{document}
