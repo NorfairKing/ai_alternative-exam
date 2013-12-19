@@ -53,7 +53,7 @@ L(CM,AG) \wedge L(AG,RC) \wedge L(RC,C3) \wedge L(DK,DG)
 \]
 \item Als iemand je in een caf\'e heeft gezien ben je daar geweest.
 \[
-(\forall c)(C(c) \Rightarrow ((\exists p : P(p) \wedge G(p,c)) \Rightarrow Gw(c)))
+(\forall c)(C(c) \Rightarrow ((\exists p) (P(p) \wedge G(p,c)) \Rightarrow Gw(c)))
 \]
 \item Je bent in wijzerzin 'te werk' gegaan.
 \[
@@ -84,6 +84,148 @@ Nu proberen we het volgende te bewijzen.
 \[
 Gw(DK)
 \]
+
+\subsection{Normaalvorm <TODO NAAM>}
+\begin{itemize}
+\item $C(CM)\wedge C(AG)\wedge C(RC)\wedge C(C3)\wedge C(DK)\wedge C(DG)$
+\[
+\left\{
+\begin{array}{c c c}
+C(CM) &\leftarrow& True\\
+C(AG) &\leftarrow& True\\
+C(RC) &\leftarrow& True\\
+C(C3) &\leftarrow& True\\
+C(DK) &\leftarrow& True\\
+C(DG) &\leftarrow& True\\
+\end{array}
+\right.
+\]
+
+\item $P(BV) \wedge P(VA)$
+\[
+\left\{
+\begin{array}{c c c}
+P(BV) &\leftarrow& True\\
+P(VA) &\leftarrow& True\\
+\end{array}
+\right.
+\]
+
+\item $L(CM,AG) \wedge L(AG,RC) \wedge L(RC,C3) \wedge L(DK,DG)$
+\[
+\left\{
+\begin{array}{c c c}
+L(CM,AG) &\leftarrow& True\\
+L(AG,RC) &\leftarrow& True\\
+L(RC,C3) &\leftarrow& True\\
+L(DK,DG) &\leftarrow& True\\
+\end{array}
+\right.
+\]
+
+\item $(\forall c)(C(c) \Rightarrow ((\exists p) (P(p) \wedge G(p,c)) \Rightarrow Gw(c)))$
+\begin{itemize}
+\item $ {\color{red}(\forall c)} (\neg C(c) \vee (\neg ((\exists p)(P(p)\wedge G(p,c))) \vee Gw(c)))$
+
+\item $\neg C(c) \vee ((\forall p)\neg(P(p)\wedge G(p,c))) \vee Gw(c)$
+
+\item $\neg C(c) \vee (\forall p)(\neg P(p)\vee \neg G(p,c)) \vee Gw(c)$
+
+\item $(\forall p) \neg C(c) \vee \neg P(p) \vee \neg G(p,c) \vee Gw(c)$
+
+\item ${\color{red}(\forall p)} \neg C(c) \vee \neg P(p) \vee \neg G(p,c) \vee Gw(c)$
+
+\[Gw(c)\leftarrow C(c) \wedge P(p) \wedge G(p,c)\]
+\end{itemize}
+\item $(\forall c)(( C(c) \wedge Gw(c)) \Rightarrow ((\forall d)(( C(d) \wedge L(d,c)))\Rightarrow Gw(d)))$
+\begin{itemize}
+\item ${\color{red}(\forall c)}( C(c) \wedge Gw(c)) \Rightarrow ((\forall d)(( C(d) \wedge L(d,c)))\Rightarrow Gw(d))$
+
+\item $\neg( C(c) \wedge Gw(c)) \vee ((\forall d)\neg(( C(d) \wedge L(d,c)))\vee Gw(d))$
+
+\item $\neg C(c) \vee \neg Gw(c) \vee (\forall d)( \neg C(d) \vee \neg L(d,c))\vee Gw(d)$
+
+\item ${\color{red}(\forall d)} \neg C(c) \vee \neg Gw(c) \vee \neg C(d) \vee \neg L(d,c)\vee Gw(d)$
+\[
+ Gw(d)\leftarrow
+C(c) \wedge Gw(c) \wedge C(d) \wedge L(d,c) \]
+\end{itemize}
+
+\item $Gw(CM) \wedge Gw(AG)$
+\[
+\left\{
+\begin{array}{c c c}
+Gw(CM) &\leftarrow& True\\
+Gw(AG) &\leftarrow& True\\
+\end{array}
+\right.
+\]
+
+\item $G(BV,RC)$
+\[
+G(BV,RC) \leftarrow True\\
+\]
+
+\item $(\forall c) ((C(c) \wedge G(BV,c)) \Rightarrow ((\exists c') (C(c') \wedge Gw(c') \wedge c \neq c')))$
+\begin{itemize}
+\item ${\color{red}(\forall c)}((C(c) \wedge G(BV,c)) \Rightarrow ((\exists c') (C(c') \wedge Gw(c') \wedge c \neq c')))$
+
+\item $\neg (C(c) \wedge G(BV,c)) \vee (\exists c') (C(c') \wedge Gw(c') \wedge c \neq c')$
+
+\item $\neg C(c) \vee \neg G(BV,c) \vee {\color{red} (\exists c')} (C(c') \wedge Gw(c') \wedge c \neq c')$
+
+\item $\neg C(c) \vee \neg G(BV,c) \vee (C(A) \wedge Gw(A) \wedge c \neq A)$
+
+\item 
+$(C(A)\vee \neg C(c) \vee \neg G(BV,c)) \wedge (Gw(A) \neg C(c) \vee \neg G(BV,c))\wedge (c \neq A\neg \vee C(c) \vee \neg G(BV,c))$
+
+\[
+\left\{
+\begin{array}{c c c}
+C(A)\leftarrow  C(c) \wedge  G(BV,c)\\
+Gw(A) \leftarrow  C(c) \wedge  G(BV,c)\\
+C(c) \leftarrow c = A \wedge G(BV,c)
+\end{array}
+\right.
+\]
+\end{itemize}
+
+\item $(\exists c) (C(c) \wedge G(VA,c) \wedge c\neq CM \wedge c \neq AG)$
+\begin{itemize}
+\item ${\color{red}(\exists c)} (C(c) \wedge G(VA,c) \wedge c\neq CM \wedge c \neq AG)$
+
+\item $(C(B) \wedge G(VA,B) \wedge B\neq CM \wedge B \neq AG)$
+
+\[
+\left\{
+\begin{array}{c c c}
+C(B) &\leftarrow& True\\
+G(VA,B) &\leftarrow& True\\
+false &\leftarrow& B = CM\\
+false &\leftarrow& B = AG\\
+\end{array}
+\right.
+\]
+\end{itemize}
+
+\item $(\forall c) ((C(c) \wedge G(VA,c)) \rightarrow \neg G(BV,c))$
+\begin{itemize}
+\item ${\color{red}(\forall c)} ((C(c) \wedge G(VA,c)) \rightarrow \neg G(BV,c))$
+
+\item $\neg(C(c) \wedge G(VA,c)) \vee \neg G(BV,c)$
+
+\item $\neg C(c) \vee \neg G(VA,c) \vee \neg G(BV,c)$
+
+\[
+False \leftarrow C(c) \wedge G(VA,c) \wedge G(BV,c)
+\]
+\end{itemize}
+
+\item $\neg Gw(DK)$
+\[
+False \leftarrow Gw(DK)
+\]
+\end{itemize}
 
 
 \end{document}
