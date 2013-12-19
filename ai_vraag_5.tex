@@ -53,11 +53,11 @@ L(CM,AG) \wedge L(AG,RC) \wedge L(RC,C3) \wedge L(DK,DG)
 \]
 \item Als iemand je in een caf\'e heeft gezien ben je daar geweest.
 \[
-\forall c: (C(c) \rightarrow ((\exists p : P(p) \wedge G(p,c)) \Rightarrow Gw(c)))
+(\forall c)(C(c) \Rightarrow ((\exists p : P(p) \wedge G(p,c)) \Rightarrow Gw(c)))
 \]
 \item Je bent in wijzerzin 'te werk' gegaan.
 \[
-\forall c: C(c) \wedge Gw(c) \Rightarrow (\forall(d): C(d) \wedge L(d,c) \Rightarrow Gw(d))
+(\forall c)(( C(c) \wedge Gw(c)) \Rightarrow ((\forall d)(( C(d) \wedge L(d,c)))\Rightarrow Gw(d)))
 \]
 \item Je bent in Caf\'e Manger en Alegria geweest.
 \[
@@ -69,15 +69,15 @@ G(BV,RC)
 \]
 \item Als je je beste vriend hebt gezien, heeft hij je zeker dan nog naar \'e\'en ander caf\'e heeft meegenomen.
 \[
-\exists c: (C(c) \wedge G(BV,c)) \Rightarrow (\exists c': C(c') \wedge Gw(c') \wedge c \neq c')
+(\forall c) ((C(c) \wedge G(BV,c)) \Rightarrow ((\exists c') (C(c') \wedge Gw(c') \wedge c \neq c')))
 \]
 \item Je ziet de volgende dag op facebook een foto van jezelf met de aartsvijand van je beste vriend in een caf\'e dat je niet herkent. Omdat je het caf\'e niet herkent kan het niet \'e\'en van de eerste caf\'e's geweest zijn. 
 \[
-\exists c: (C(c) \wedge G(VA,c) \wedge c\neq CM \wedge c \neq AG)
+(\exists c) (C(c) \wedge G(VA,c) \wedge c\neq CM \wedge c \neq AG)
 \]
 \item Je weet dat je beste vriend en zijn vijand nooit samen met jou op caf\'e zouden gaan.
 \[
-\forall : (C(c) \wedge G(VA,c) \rightarrow \neg G(BV,c))
+(\forall c) ((C(c) \wedge G(VA,c)) \rightarrow \neg G(BV,c))
 \]
 \end{itemize}
 Nu proberen we het volgende te bewijzen.
