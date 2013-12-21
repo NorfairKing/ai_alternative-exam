@@ -29,7 +29,7 @@ Element &  Afkorting\\
 \hline
 Caf\'e Manger & CM\\
 Alegria & AG\\
-Rock Caf\'e, Caf\'e & RC\\
+Rock Caf\'e & RC\\
 Caf\'e 33 & C3\\
 je beste vriend & BV\\
 \end{tabular}
@@ -77,7 +77,7 @@ Gw(C3)
 
 \subsection{Implicatieve normaalvorm}
 We zetten nu alle vertaalde formules nu om naar implicatieve normaalvorm.
-Wanneer kwantoren weggelaten kunnen worden, worden ze eerst in het rood gezet. De bekomen logische zinnen (dit kunnen er meerdere zijn) worden achteraf nog samengevat.
+Wanneer kwantoren weggelaten kunnen worden, worden ze eerst in het rood gezet. De bekomen logische zinnen (dit kunnen er meerdere zijn) worden achteraf nog samengevat. Tenslotte voegen we ook negatie van de hypothese toe en zetten deze ook om naar implicatieve normaalvorm.
 \begin{itemize}
 \item $C(CM)\wedge C(AG)\wedge C(RC)\wedge C(C3)$
 \[
@@ -183,7 +183,7 @@ False \leftarrow Gw(C3)
 \end{itemize}
 
 \subsection{Resolutie}
-De resolutie is eigenlijk helemaal niet zo moeilijk, maar je kan heel lang bezig zijn als je het te ver gaat zoeken.
+De resolutie is eigenlijk helemaal niet zo moeilijk, maar je kan heel lang bezig zijn als je het te ver gaat zoeken. Wanneer we met een andere formule starten 
 
 \begin{enumerate}
 
@@ -206,7 +206,8 @@ De resolutie is eigenlijk helemaal niet zo moeilijk, maar je kan heel lang bezig
 
 \item $False \leftarrow True$
 \end{enumerate}
-We vinden een contradictie in stap $4$.
+We vinden een contradictie in stap $4$. Omdat we tot een contradictie komen door de negatie van het te bewijzen toe te voegen aan de gegevens kunnen we besluiten dat de hypothese geldt in de gegeven structuur.
+
 
 
 \end{document}
