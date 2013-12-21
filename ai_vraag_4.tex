@@ -34,9 +34,9 @@ Als student krijg je tijdens het werken wel eens zin in spek met eieren. Als lui
 \caption{begin- en eindtoestand}
 \label{ienf}
 \end{figure}
-Figuur \ref{ienf}, toont de begintoestand en de gewenste eindtoestand. In de begintoestand zit de student aan zijn bureau in zijn kamer en heeft hij honger. In de eindtoestand zit de student weer aan zijn bureau en heeft hij een bord met gebakken spek en eieren.
+Figuur \ref{ienf} toont de begintoestand en de gewenste eindtoestand. In de begintoestand zit de student aan zijn bureau in zijn kamer en heeft hij honger. In de eindtoestand zit de student weer aan zijn bureau en heeft hij een bord met gebakken spek en eieren.
 \subsection{Acties}
-Het hele proces kan beschreven worden een door aantal acties die de student kan ondernemen.
+Het hele proces kan beschreven worden door een aantal acties die de student kan ondernemen.
 \begin{itemize}
 \item
 De student kan naar de keuken wandelen en terug. In figuur \ref{keuken} staan de overeenkomstige acties beschreven.
@@ -158,10 +158,10 @@ In de keuken kan de student koken en alle overeenkomstige acties daarvoor staan 
 \label{strips_1}
 \includegraphics[scale=0.25]{resources/graphs/strips_1.png}
 \end{figure}
-In het eerste deel van de oplossing stellen we de graaf op met alle 'establishes' en 'threatens' relaties. Dit gebeurt als volgt. We beginnen met de begin en de eindsituatie te tekenen. Nu gaan we alle precondities voor de eindsituatie af. Voor elke operatie die we toevoegen gaan we diepte eerst, recursief alle precondities af. $In(Kamer)$ is al waar bij het begin. We proberen aan $Heeft(Maaltijd)$ te voldoen door $LOB$ toe te voegen. Om aan de preconditities van $LOB$ te voldoen voegen we eerst $HEEN$ toe (om aan $In(Keuken)$ te voldoen). We zien nu dat $DEL In(Kamer)$ van $HEEN$ $ADD In(Kamer)$ bedreigt. Dit betekent dat $HEEN$ ofwel voor het begin zou moeten gebeuren, ofwel na het einde. Omdat dit beide niet kan verwijderen we de 'establishes' boog van $BEGIN$ naar $EINDE$ (Deze boog is wel getekend voor de duidelijkheid). Deze procedure zetten we verder tot aan alle precondities van $EINDE$ voldaan is en we een graaf bekomen zoals in figuur \ref{strips_1} \footnote{Ter informatie: De uiteenzetting van de procedure is niet gevraagd.}.
+In het eerste deel van de oplossing stellen we de graaf op met alle 'establishes' en 'threatens' relaties. Dit gebeurt als volgt. We beginnen met de begin en de eindsituatie te tekenen. Nu gaan we alle precondities voor de eindsituatie af. Voor elke operatie die we toevoegen gaan we diepte eerst, recursief alle precondities af. $In(Kamer)$ is al waar bij het begin. We proberen aan $Heeft(Maaltijd)$ te voldoen door $LOB$ toe te voegen. Om aan de precondities van $LOB$ te voldoen voegen we eerst $HEEN$ toe (om aan $In(Keuken)$ te voldoen). We zien nu dat $DEL In(Kamer)$ van $HEEN$ $ADD In(Kamer)$ bedreigt. Dit betekent dat $HEEN$ ofwel voor het begin zou moeten gebeuren, ofwel na het einde. Omdat dit allebei niet kan, verwijderen we de 'establishes' boog van $BEGIN$ naar $EINDE$ (Deze boog is wel getekend voor de duidelijkheid). Deze procedure zetten we verder tot aan alle precondities van $EINDE$ voldaan is en we een graaf bekomen zoals in figuur \ref{strips_1} \footnote{Ter informatie: De uiteenzetting van de procedure is niet gevraagd.}.
 
 In de graaf van figuur \ref{strips_1} zijn de groene bogen de 'establishes' bogen. Ze houden in dat de eigenschap bij het vertrekpunt ervoor zorgt dat aan een eigenschap bij het eindpunt voldaan is. De operatie waar de boog begint moet dus voor de operatie aan het eind van de boog plaatsvinden.
-De De rode bogen zijn de 'threatens' bogen. Deze betekenen dat de eigenschap bij het vertrekpunt de eigenschap bij het vertrekpunt van de boog waar hij naar wijst ongedaan maakt. De operatie waar de rode boog begint moet dus ofwel voor het vertrekpunt van de boog waar hij naar wijst plaatsvinden, ofwel na het eindpunt.
+De rode bogen zijn de 'threatens' bogen. Deze betekenen dat de eigenschap bij het vertrekpunt de eigenschap bij het vertrekpunt van de boog waar hij naar wijst ongedaan maakt. De operatie waar de rode boog begint moet dus ofwel voor het vertrekpunt van de boog waar hij naar wijst plaatsvinden, ofwel na het eindpunt.
 \subsection{Before-graaf}
 \begin{figure}[H]
 \centering
@@ -172,9 +172,9 @@ De De rode bogen zijn de 'threatens' bogen. Deze betekenen dat de eigenschap bij
 In figuur \ref{strips_2} is de graaf getekend met alle 'before'
 -relaties. We kunnen nu de mogelijke plannen opstellen. 
 
-In elk plan moeten we eerst naar de keuken gaan en op het einde het ei en het spek op een bord leggen, waarna we terug naar de kamen gaan. Er zijn echter een aantal mogelijke plannen omdat we daartussen kunnen koken in een aantal mogelijke volgorden.
+In elk plan moeten we eerst naar de keuken gaan en op het einde het ei en het spek op een bord leggen, waarna we terug naar de kamer gaan. Er zijn echter een aantal mogelijke plannen omdat we daartussen kunnen koken in verschillende volgorden.
 
-Het is makkelijk in te zien dat het niet uitmaakt of we eerst het ei bakken en daarna het spek. Bovendien maakt het niet uit of we eerst het ei uit de koelkast nemen of eerst het spek. We kunnen zelfs eerst het ei uit de koelkast nemen, dan het spek, eerst het spek bakken, en daarna pas het ei. Alle mogelijkheden zijn hieronder samengevat.
+Het is gemakkelijk in te zien dat het niet uitmaakt of we eerst het ei bakken en daarna het spek. Bovendien maakt het niet uit of we eerst het ei uit de koelkast nemen of eerst het spek. We kunnen zelfs eerst het ei uit de koelkast nemen, dan het spek, eerst het spek bakken, en daarna pas het ei. Alle mogelijkheden zijn hieronder samengevat.
 \[
 \begin{array}{c}
 BEGIN \rightarrow HEEN \rightarrow NE \rightarrow NS \rightarrow BE \rightarrow BS \rightarrow DSO\rightarrow LBO \rightarrow TERUG \rightarrow EINDE\\

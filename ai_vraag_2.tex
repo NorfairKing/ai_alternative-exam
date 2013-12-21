@@ -56,9 +56,9 @@ Aan de hand van de formulering van het systeem heeft het IT departement een hypo
 \begin{tikzpicture}
 \node (h) at (-4,-0.5) {Muzieksmaak};
 \node (hG) at (-4,-1) {\small ?};
-\node (hi) at (-5,-2.5) {\small mainstream \tiny i};
+\node (hi) at (-5,-2.5) {\small mainstream \tiny m};
 \draw[->] (hG) -- (hi);
-\node (hig) at (-6,-4.25) {\small pop \tiny g};
+\node (hig) at (-6,-4.25) {\small pop \tiny p};
 \draw[->] (hi) -- (hig);
 \node (hil) at (-5,-3.75) {\small latin \tiny l};
 \draw[->] (hi) -- (hil);
@@ -105,7 +105,7 @@ S = \{\bot\}
 \[
 G = \{[?,?,?,?]\}
 \]
-De hypothesen die in $S$ en $G$ zitten zijn na elke iteratie getekend in een graaf. De graag bestaat uit twee bomen waarvan de bovenste $S$ voorstelt en de onderste $G$. Niet alle hypothesen die getekend zijn zitten echter in $G$ of in $S$. Als een hypothese niet in \'e\'en van de verzamelingen zit wordt het met een ellips afgebeeld. De rechthoekige nodes zitten wel in $G$ of $S$.
+De hypothesen die in $S$ en $G$ zitten zijn na elke iteratie getekend in een graaf. De graaf bestaat uit twee bomen waarvan de bovenste $S$ voorstelt en de onderste $G$. Niet alle hypothesen die getekend zijn zitten echter in $G$ of in $S$. Als een hypothese niet in \'e\'en van de verzamelingen zit wordt het met een ellips afgebeeld. De rechthoekige nodes zitten wel in $G$ of $S$.
 \subsection{Iteratie 1}
 \begin{figure}
 [H]
@@ -128,7 +128,7 @@ Het eerste voorbeeld is een positief voorbeeld. We generaliseren alle hypothesen
 \label{iter_2}
 \includegraphics[scale=0.5]{resources/graphs/iteration_2.png}
 \end{figure}
-Het volgende voorbeeld is negatief beoordeeld. We specifi\"eren alle hypothesen in $G$ waaraan het voorbeeld voldoet. $[m,j,p,g]$ voldoet aan $[?,?,?,?]$ dus we moeten dit specifi\"eren tot het voorbeeld net niet meer aan die nieuwe hypothese(n) voldoet. We voegen in totaal zes hypothesen toe onder $[?,?,?,?]$. Nu begint het snoeien. We verwijderen $[?,o,?,?]$ en $[?,?,?,f]$ omdat deze hypothesen inconsistent zijn met $[v,z,j,v]$. Een overzicht van deze iteratie zien we in figuur \ref{iter_2}.
+Het volgende voorbeeld is negatief beoordeeld. We specifi\"eren alle hypothesen in $G$ waaraan het voorbeeld voldoet. $[m,j,p,j]$ voldoet aan $[?,?,?,?]$ dus we moeten dit specifi\"eren tot het voorbeeld net niet meer aan die nieuwe hypothese(n) voldoet. We voegen in totaal zes hypothesen toe onder $[?,?,?,?]$. Nu begint het snoeien. We verwijderen $[?,o,?,?]$ en $[?,?,?,f]$ omdat deze hypothesen inconsistent zijn met $[v,z,j,v]$. Een overzicht van deze iteratie zien we in figuur \ref{iter_2}.
 \begin{itemize}
 \item $G = \{[v,?,?,?],[?,z,?,?],[?,?,s,?],[?,?,?,r]\}$
 \item $S = \{[v,z,j,v]\}$
@@ -160,7 +160,7 @@ $[?,z,?,n]$ en $[?,z,j,?]$, $[?,z,?,v]$
 \end{figure}
 Het volgende voorbeeld $4$ is een tweede voorbeeld dat positief beoordeeld is. We generaliseren $[v,s,j,v]$ tot een hypothese die ook het nieuwe voorbeeld omvat. Hiervoor zijn twee mogelijkheden die we beide toevoegen zoals beschreven in figuur \ref{iter_4}.
 \begin{itemize}
-\item $G = \{[?,v,?,j],[v,?,?,r],[?,z,j,?],[?,z,?,v]\}$
+\item $G = \{[v,?,?,r],[?,z,j,?],[?,z,?,v]\}$
 \item $S = \{[v,?,s,r],[v,?,s,a]\}$
 \end{itemize}
 \subsection{Iteratie 5}
@@ -173,7 +173,7 @@ Het volgende voorbeeld $4$ is een tweede voorbeeld dat positief beoordeeld is. W
 \end{figure}
 In iteratie 5 behandelen we ten slotte nog een positief voorbeeld. Deze keer wordt er maar \'e\'en hypothese toegevoegd en deze wordt meteen al weer verwijderd omdat ze een generalisatie is van $[v,?,s,r]$ en dus redundant is. De beschrijving van deze iteratie is te vinden in figuur \ref{iter_5}. Het resultaat van het version spaces algoritme zien we in figuur \ref{resultaat}.
 \begin{itemize}
-\item $G = \{[?,v,?,j],[v,?,?,r],[?,z,j,?],[?,z,?,v]\}$
+\item $G = \{[v,?,?,r],[?,z,j,?],[?,z,?,v]\}$
 \item $S = \{[v,?,s,r],[v,?,s,a]\}$
 \item Gesnoeid: $[v,?,s,?]$
 \end{itemize}
@@ -188,5 +188,5 @@ In iteratie 5 behandelen we ten slotte nog een positief voorbeeld. Deze keer wor
 
 \subsection{beslissingsprocedure}
 De dame die aan het eind van de dag binnenkomt wordt als $[v,j,j,j]$ gecategoriseerd.
-We kijken nu naar $S\cup G$ en zien dat deze persoon aan \'e\'en hypothesen voldoet en niet aan de vijf andere. Als we ervan uitgaan dat elke hypothese evenveel waard is kunnen we besluiten dat de cli\"ent deze dame met een grotere kans zal afkeuren dan aanvaarden.
+We kijken nu naar $S\cup G$ en zien dat deze persoon aan geen enkele hypothese voldoet. We besluiten dat de cli\"ent deze dame met waarschijnlijk zal afkeuren.
 \end{document}

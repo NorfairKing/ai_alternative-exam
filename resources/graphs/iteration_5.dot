@@ -10,7 +10,6 @@ digraph iter_1 {
     ex_2_1 [label = "[v,?,?,?]",shape=ellipse];
     ex_2_2 [label = "[?,z,?,?]",shape=ellipse];
  
-    ex_3_1  [label = "[v,?,?,j]"];
     ex_3_4  [label = "[v,?,?,r]"];
  
     ex_3_8  [label = "[?,z,j,?]"];
@@ -24,7 +23,6 @@ digraph iter_1 {
     top -> ex_2_1;
     top -> ex_2_2;
     
-    ex_2_1 -> ex_3_1;    
     ex_2_1 -> ex_3_4;    
     
     ex_2_2 -> ex_3_8;
