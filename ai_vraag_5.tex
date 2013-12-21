@@ -3,7 +3,7 @@
 
 \chapter{Kater}
 \section{Vraag}
-Op een ochtend word je met barstende hoofdpijn wakker in je bed op kot. Je herinnert je dat je op een kroegentocht bent geweest op de grote markt. Je zou de grote markt in wijzerzin afgaan beginnende bij caf\'e Manger \footnote{Ter herinnering: De cafe's op de oude markt in volgorde zijn "Manger, Alegria, Rock Caf\'e, Cafe 33, De Kroeg}. Je herinnert je nog dat je in cafe Manger en in Alegria bent geweest, over de gebeurtenissen daarna weet je niets meer. Je belt naar je beste vriend en die zegt dat hij met jou in het Rock Caf\'e aan de toog heeft gezeten. Na het telefoontje besef je dat als je je beste vriend hebt gezien, hij je dan zeker nog naar \'e\'en ander caf\'e heeft meegenomen. Je ziet de volgende dag op facebook een foto van jezelf met de aartsvijand van je beste vriend in een caf\'e dat je niet herkent. Je weet dat die twee nooit samen met jou op caf\'e zouden gaan omdat ze elkaar niet kunnen uitstaan. Je vraagt je af of je in De Kroeg bent geraakt.
+Op een ochtend word je met barstende hoofdpijn wakker in je bed op kot. Je herinnert je dat je op een kroegentocht bent geweest op de grote markt. Je zou de grote markt in wijzerzin afgaan beginnende bij caf\'e Manger \footnote{Ter herinnering: De cafe's op de oude markt in volgorde zijn "Manger, Alegria, Rock Caf\'e, Cafe 33}. Je herinnert je nog dat je in cafe Manger en in de Alegria bent geweest, over de gebeurtenissen daarna weet je niets meer. Je belt naar je beste vriend en die zegt dat hij met jou in het Rock Caf\'e aan de toog heeft gezeten. Na het telefoontje besef je dat als je je beste vriend hebt gezien, hij je dan zeker nog naar \'e\'en volgend caf\'e heeft meegenomen. Je vraagt je af of je in Caf\'e 33 bent geraakt.
 
 Als goede informaticus merk je meteen op dat dit probleem op te lossen valt met een automatisch redeneersysteem. Probeer te bewijzen dat je in De Kroeg bent geraakt. Als hulpmiddel krijg je het alfabet. Let goed op dat je ook de impliciete logische beweringen formuleert.
 
@@ -31,11 +31,9 @@ Caf\'e Manger & CM\\
 Alegria & AG\\
 Rock Caf\'e, Caf\'e & RC\\
 Caf\'e 33 & C3\\
-De Kroeg & DK\\
 je beste vriend & BV\\
-de vijand van je beste vriend & VA\\
 \end{tabular}
-\caption{Caf\'es}
+\caption{Elementen}
 \label{cafes}
 \end{figure}
 
@@ -44,22 +42,22 @@ de vijand van je beste vriend & VA\\
 \subsection{Vertaling}
 We vertalen nu alle mogelijke gegevens uit de opgave. De eerste vier beweringen zijn impliciet (en evident), maar moeten zeker worden geformuleerd.
 \begin{itemize}
-\item De opgesomde caf\'e's zijn caf\'e's en je beste vriend en zijn vijand zijn personen.
+\item De opgesomde caf\'e's zijn caf\'e's en je beste vriend is een persoon.
 \[ C(CM)\wedge C(AG)\wedge C(RC)\wedge C(C3)\wedge C(DK) \]
-\[ P(BV) \wedge P(VA)\]
+\[ P(BV)\]
 \item De caf\'es staan in volgorde.
 \[
 L(CM,AG) \wedge L(AG,RC) \wedge L(RC,C3)
 \]
 \item Als iemand je in een caf\'e heeft gezien ben je daar geweest.
 \[
-(\forall c)(C(c) \Rightarrow ((\exists p) (P(p) \wedge G(p,c)) \Rightarrow Gw(c)))
+(\forall a)(C(a) \Rightarrow ((\exists p) (P(p) \wedge G(p,a)) \Rightarrow Gw(a)))
 \]
 \item Je bent in wijzerzin 'te werk' gegaan.
 \[
-(\forall c)(( C(c) \wedge Gw(c)) \Rightarrow ((\forall d)(( C(d) \wedge L(d,c)))\Rightarrow Gw(d)))
+(\forall b)(( C(b) \wedge Gw(b)) \Rightarrow ((\forall c)(( C(c) \wedge L(c,b)))\Rightarrow Gw(c)))
 \]
-\item Je bent in Caf\'e Manger en Alegria geweest.
+\item Je bent in Caf\'e Manger en de Alegria geweest.
 \[
 Gw(CM) \wedge Gw(AG)
 \]
@@ -67,29 +65,21 @@ Gw(CM) \wedge Gw(AG)
 \[
 G(BV,RC)
 \]
-\item Als je je beste vriend hebt gezien, heeft hij je zeker dan nog naar \'e\'en ander caf\'e heeft meegenomen.
+\item Als je je beste vriend hebt gezien, heeft hij je zeker dan nog naar \'e\'en volgend caf\'e heeft meegenomen.
 \[
-(\forall c) ((C(c) \wedge G(BV,c)) \Rightarrow ((\exists c') (C(c') \wedge Gw(c') \wedge c \neq c')))
-\]
-\item Je ziet de volgende dag op facebook een foto van jezelf met de aartsvijand van je beste vriend in een caf\'e dat je niet herkent. Omdat je het caf\'e niet herkent kan het niet \'e\'en van de eerste caf\'e's geweest zijn. 
-\[
-(\exists c) (C(c) \wedge G(VA,c) \wedge c\neq CM \wedge c \neq AG)
-\]
-\item Je weet dat je beste vriend en zijn vijand nooit samen met jou op caf\'e zouden gaan.
-\[
-(\forall c) ((C(c) \wedge G(VA,c)) \rightarrow \neg G(BV,c))
+(\forall d) ((C(d) \wedge G(BV,d)) \Rightarrow ((\exists e) (C(e) \wedge Gw(e) \wedge L(d,e))))
 \]
 \end{itemize}
 Nu proberen we het volgende te bewijzen.
 \[
-Gw(DK)
+Gw(C3)
 \]
 
 \subsection{Implicatieve normaalvorm}
 We zetten nu alle vertaalde formules nu om naar implicatieve normaalvorm.
 Wanneer kwantoren weggelaten kunnen worden, worden ze eerst in het rood gezet. De bekomen logische zinnen (dit kunnen er meerdere zijn) worden achteraf nog samengevat.
 \begin{itemize}
-\item $C(CM)\wedge C(AG)\wedge C(RC)\wedge C(C3)\wedge C(DK)$
+\item $C(CM)\wedge C(AG)\wedge C(RC)\wedge C(C3)$
 \[
 \left\{
 \begin{array}{c c c}
@@ -97,19 +87,13 @@ C(CM) &\leftarrow& True\\
 C(AG) &\leftarrow& True\\
 C(RC) &\leftarrow& True\\
 C(C3) &\leftarrow& True\\
-C(DK) &\leftarrow& True\\
 \end{array}
 \right.
 \]
 
-\item $P(BV) \wedge P(VA)$
+\item $P(BV)$
 \[
-\left\{
-\begin{array}{c c c}
-P(BV) &\leftarrow& True\\
-P(VA) &\leftarrow& True\\
-\end{array}
-\right.
+P(BV) \leftarrow True\\
 \]
 
 \item $L(CM,AG) \wedge L(AG,RC) \wedge L(RC,C3)$
@@ -123,33 +107,34 @@ L(RC,C3) &\leftarrow& True\\
 \right.
 \]
 
-\item $(\forall c)(C(c) \Rightarrow ((\exists p) (P(p) \wedge G(p,c)) \Rightarrow Gw(c)))$
+\item $(\forall a)(C(a) \Rightarrow ((\exists p) (P(p) \wedge G(p,a)) \Rightarrow Gw(a)))$
 \begin{itemize}
-\item $ {\color{red}(\forall c)} (\neg C(c) \vee (\neg ((\exists p)(P(p)\wedge G(p,c))) \vee Gw(c)))$
+\item $ {\color{red}(\forall a)} (\neg C(a) \vee (\neg ((\exists p)(P(p)\wedge G(p,a))) \vee Gw(a)))$
 
-\item $\neg C(c) \vee ((\forall p)\neg(P(p)\wedge G(p,c))) \vee Gw(c)$
+\item $\neg C(a) \vee ((\forall p)\neg(P(p)\wedge G(p,a))) \vee Gw(a)$
 
-\item $\neg C(c) \vee (\forall p)(\neg P(p)\vee \neg G(p,c)) \vee Gw(c)$
+\item $\neg C(a) \vee (\forall p)(\neg P(p)\vee \neg G(p,a)) \vee Gw(a)$
 
-\item $(\forall p) \neg C(c) \vee \neg P(p) \vee \neg G(p,c) \vee Gw(c)$
+\item $(\forall p) \neg C(a) \vee \neg P(p) \vee \neg G(p,a) \vee Gw(a)$
 
-\item ${\color{red}(\forall p)} \neg C(c) \vee \neg P(p) \vee \neg G(p,c) \vee Gw(c)$
+\item ${\color{red}(\forall p)} \neg C(a) \vee \neg P(p) \vee \neg G(p,a) \vee Gw(a)$
 
 \[
-Gw(c)\leftarrow C(c) \wedge P(p) \wedge G(p,c)\]
+Gw(a)\leftarrow C(a) \wedge P(p) \wedge G(p,a)
+\]
 \end{itemize}
-\item $(\forall c)(( C(c) \wedge Gw(c)) \Rightarrow ((\forall d)(( C(d) \wedge L(d,c)))\Rightarrow Gw(d)))$
+\item $(\forall b)(( C(b) \wedge Gw(b)) \Rightarrow ((\forall c)(( C(c) \wedge L(c,b)))\Rightarrow Gw(c)))$
 \begin{itemize}
-\item ${\color{red}(\forall c)}( C(c) \wedge Gw(c)) \Rightarrow ((\forall d)(( C(d) \wedge L(d,c)))\Rightarrow Gw(d))$
+\item ${\color{red}(\forall b)}( C(b) \wedge Gw(b)) \Rightarrow ((\forall c)(( C(c) \wedge L(c,b)))\Rightarrow Gw(c))$
 
-\item $\neg( C(c) \wedge Gw(c)) \vee ((\forall d)\neg(( C(d) \wedge L(d,c)))\vee Gw(d))$
+\item $\neg( C(b) \wedge Gw(b)) \vee ((\forall c)\neg(( C(c) \wedge L(c,b)))\vee Gw(c))$
 
-\item $\neg C(c) \vee \neg Gw(c) \vee (\forall d)( \neg C(d) \vee \neg L(d,c))\vee Gw(d)$
+\item $\neg C(b) \vee \neg Gw(b) \vee (\forall c)( \neg C(c) \vee \neg L(c,b))\vee Gw(c)$
 
-\item ${\color{red}(\forall d)} \neg C(c) \vee \neg Gw(c) \vee \neg C(d) \vee \neg L(d,c)\vee Gw(d)$
+\item ${\color{red}(\forall c)} \neg C(b) \vee \neg Gw(b) \vee \neg C(c) \vee \neg L(c,c)\vee Gw(c)$
 \[
- Gw(d)\leftarrow
-C(c) \wedge Gw(c) \wedge C(d) \wedge L(d,c) \]
+ Gw(c)\leftarrow C(b) \wedge Gw(b) \wedge C(c) \wedge L(c,b)
+\]
 \end{itemize}
 
 \item $Gw(CM) \wedge Gw(AG)$
@@ -167,97 +152,61 @@ Gw(AG) &\leftarrow& True\\
 G(BV,RC) \leftarrow True\\
 \]
 
-\item $(\forall c) ((C(c) \wedge G(BV,c)) \Rightarrow ((\exists c') (C(c') \wedge Gw(c') \wedge c \neq c')))$
+\item $(\forall d) ((C(d) \wedge G(BV,d)) \Rightarrow ((\exists e) (C(e) \wedge Gw(e) \wedge L(d,e)))$
 \begin{itemize}
-\item ${\color{red}(\forall c)}((C(c) \wedge G(BV,c)) \Rightarrow ((\exists c') (C(c') \wedge Gw(c') \wedge c \neq c')))$
+\item ${\color{red}(\forall d)}((C(d) \wedge G(BV,d)) \Rightarrow ((\exists e) (C(e) \wedge Gw(e) \wedge L(d,e))))$
 
-\item $\neg (C(c) \wedge G(BV,c)) \vee (\exists c') (C(c') \wedge Gw(c') \wedge c \neq c')$
+\item $\neg (C(d) \wedge G(BV,d)) \vee (\exists e) (C(e) \wedge Gw(e) \wedge L(d,e))$
 
-\item $\neg C(c) \vee \neg G(BV,c) \vee {\color{red} (\exists c')} (C(c') \wedge Gw(c') \wedge c \neq c')$
+\item $\neg C(d) \vee \neg G(BV,d) \vee {\color{red} (\exists e)} (C(e) \wedge Gw(e) \wedge L(d,e))$
 
-\item $\neg C(c) \vee \neg G(BV,c) \vee (C(A) \wedge Gw(A) \wedge c \neq A)$
+\item $\neg C(d) \vee \neg G(BV,d) \vee (C(A) \wedge Gw(A) \wedge  L(d,A))$
 
 \item 
-$(C(A)\vee \neg C(c) \vee \neg G(BV,c)) \wedge (Gw(A) \neg C(c) \vee \neg G(BV,c))\wedge (c \neq A\neg \vee C(c) \vee \neg G(BV,c))$
+$(C(A)\vee \neg C(d) \vee \neg G(BV,d)) \wedge (Gw(A)\vee  \neg C(d) \vee \neg G(BV,d)) \wedge (L(d,A) \vee \neg C(d) \vee \neg G(BV,d))$
 
 \[
 \left\{
 \begin{array}{c c c}
-C(A)\leftarrow  C(c) \wedge  G(BV,c)\\
-Gw(A) \leftarrow  C(c) \wedge  G(BV,c)\\
-C(c) \leftarrow c = A \wedge G(BV,c)\\
+C(A)\leftarrow  C(d) \wedge  G(BV,d)\\
+Gw(A) \leftarrow  C(d) \wedge  G(BV,d)\\
+L(d,A) \leftarrow C(d) \wedge G(BV,d)\\
 \end{array}
 \right.
 \]
 \end{itemize}
 
-\item $(\exists c) (C(c) \wedge G(VA,c) \wedge c\neq CM \wedge c \neq AG)$
+\item $\neg Gw(C3)$
+\[
+False \leftarrow Gw(C3)
+\]
+\end{itemize}
+
+\subsection{Resolutie}
+De resolutie is eigenlijk helemaal niet zo moeilijk, maar je kan heel lang bezig zijn als je het te ver gaat zoeken.
+
+\begin{enumerate}
+
+\item $Gw(A) \leftarrow C(d) \wedge G(BV,d)$
 \begin{itemize}
-\item ${\color{red}(\exists c)} (C(c) \wedge G(VA,c) \wedge c\neq CM \wedge c \neq AG)$
-
-\item $(C(B) \wedge G(VA,B) \wedge B\neq CM \wedge B \neq AG)$
-
-\[
-\left\{
-\begin{array}{c c c}
-C(B) &\leftarrow& True\\
-G(VA,B) &\leftarrow& True\\
-False &\leftarrow& B = CM\\
-False &\leftarrow& B = AG\\
-\end{array}
-\right.
-\]
+\item $False \leftarrow Gw(C3)$
+\item Resolutie: $\{ A/C3\}$
 \end{itemize}
 
-\item $(\forall c) ((C(c) \wedge G(VA,c)) \rightarrow \neg G(BV,c))$
+\item $False \leftarrow C(d) \wedge G(BV,d)$
 \begin{itemize}
-\item ${\color{red}(\forall c)} ((C(c) \wedge G(VA,c)) \rightarrow \neg G(BV,c))$
-
-\item $\neg(C(c) \wedge G(VA,c)) \vee \neg G(BV,c)$
-
-\item $\neg C(c) \vee \neg G(VA,c) \vee \neg G(BV,c)$
-
-\[
-False \leftarrow C(c) \wedge G(VA,c) \wedge G(BV,c)
-\]
+\item $G(BV,RC) \leftarrow True$
+\item Resolutie: $\{ d/RC\}$
 \end{itemize}
 
-\item $\neg Gw(DK)$
-\[
-False \leftarrow Gw(DK)
-\]
+\item $False \leftarrow C(RC)$
+\begin{itemize}
+\item $C(RC) \leftarrow True$
 \end{itemize}
-De volledige verzameling van alle hypothesen en de negatie van hetgeen te bewijzen valt zien we in figuur \ref{samengevat}.
-\begin{figure}[H]
-\[
-\begin{array}{c c c}
-C(CM) &\leftarrow& True\\
-C(AG) &\leftarrow& True\\
-C(RC) &\leftarrow& True\\
-C(C3) &\leftarrow& True\\
-C(DK) &\leftarrow& True\\
-P(BV) &\leftarrow& True\\
-P(VA) &\leftarrow& True\\
-L(CM,AG) &\leftarrow& True\\
-L(AG,RC) &\leftarrow& True\\
-L(RC,C3) &\leftarrow& True\\
-Gw(c) &\leftarrow& C(c) \wedge P(p) \wedge G(p,c\\
-Gw(CM) &\leftarrow& True\\
-Gw(AG) &\leftarrow& True\\
-G(BV,RC) &\leftarrow& True\\
-C(A) &\leftarrow&  C(c) \wedge  G(BV,c)\\
-Gw(A) &\leftarrow&  C(c) \wedge  G(BV,c)\\
-C(c) &\leftarrow& c = A \wedge G(BV,c)\\
-C(B) &\leftarrow& True\\
-G(VA,B) &\leftarrow& True\\
-False &\leftarrow& B = CM\\
-False &\leftarrow& B = AG\\
-False &\leftarrow& C(c) \wedge G(VA,c) \wedge G(BV,c)\\
-False &\leftarrow& Gw(DK)\\
-\end{array}
-\]
-\caption{Samengevat}
-\label{samengevat}
-\end{figure}
+
+\item $False \leftarrow True$
+\end{enumerate}
+We vinden een contradictie in stap $4$.
+
 
 \end{document}
