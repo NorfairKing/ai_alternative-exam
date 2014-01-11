@@ -5,5 +5,5 @@ http://people.cs.kuleuven.be/~danny.deschreye/Alternatieve_eval_AI.htm
 ** Resultaat
 *NTB*
 ** Dankwoord
-- Bedankt aan Professor D. De Schreye voor de mogelijk tot deze examenvorm.
+- Bedankt aan Professor D. De Schreye voor de mogelijkheid tot deze examenvorm.
 - Bedankt aan iedereen die dit werk heeft nagelezen op taalfouten.
