@@ -98,7 +98,7 @@ d_{z_i}' &= \{2,3,4,5\}\\
 \subsection{Constraint network}
 \begin{figure}[H]
 \caption{Constraint Network}
-\label{fig:fourTeachersConstraintNetwork}
+\label{constraint_network}
 \centering
 \begin{tikzpicture}[vari/.style={fill=black!20,rectangle,draw=black}]
 \def\dx{4};
@@ -117,9 +117,9 @@ d_{z_i}' &= \{2,3,4,5\}\\
 \draw (B) to node[midway,sloped,above]{\small{$z_i < z_f \wedge z_i \neq z_w \wedge |z_i - z_w| \le 2$}} (C);
 \end{tikzpicture}
 \end{figure}
-Als samenvatting van heel het probleem kunnen we het zogenaamde constraint network opstellen. Zie figuur \ref{fig:fourTeachersConstraintNetwork}.
+Als samenvatting van heel het probleem kunnen we het zogenaamde constraint network opstellen. Zie figuur \ref{constraint_network}.
 
-\subsection{Uitwerking van forward checking}
+\subsection{Uitwerking van Forward Checking}
 We zullen nu de methode 'forward checking' toepassen op dit probleem. Omwille van effici\"entie zullen we een zogenaamde dynamic search rearrangement techniek toepassen. Dit betekent dat we op een strategische manier variabelen kiezen om een waarde aan toe te kennen in plaats van ze in volgorde te overlopen. We zullen op elk niveau de variabele kiezen met het kleinste overgebleven domein om een waarde aan toe te kennen.
 Doordat we dynamic search rearrangement gebruiken, is de uitwerking van deze oplossing geen grote opdracht nu alle constraints zijn geformuleerd.
 

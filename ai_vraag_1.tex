@@ -3,28 +3,28 @@
 
 \chapter{Rush Hour}
 \begin{figure}[H]
-\label{rushour}
-\caption{Opgave}
 \begin{center}
 \includegraphics[scale=1.25]{resources/pictures/rushhour.jpg}
 \end{center}
+\caption{Opgave}
+\label{rushour}
 \end{figure}
 
 \section{Vraag}
-Tijdens het studeren raak je nu eenmaal snel afgeleid. Zeker als er interessante spelletjes naast je in de kast staan. Op een dag zie je Rush hour naast je in de kast staan. Natuurlijk raak je afgeleid.
+Tijdens het studeren raak je nu eenmaal snel afgeleid. Zeker als er interessante spelletjes naast je in de kast staan. Op een dag zie je Rush Hour naast je in de kast staan. Natuurlijk raak je afgeleid.
 
-Rush hour is een schuifpuzzel die een verkeersopstopping voorstelt. Het doel is om de rode auto (X) uit het verkeer te krijgen in zo weinig mogelijk zetten. De andere auto's staan in de weg en elke auto kan enkel vooruit en achteruit bewegen. Auto's mogen meerdere vakjes per keer verschuiven maar er mag maar \'e\'en auto per zet verplaatst worden.
+Rush Hour is een schuifpuzzel die een verkeersopstopping voorstelt. Het doel is om de rode auto (X) uit het verkeer te krijgen in zo weinig mogelijk zetten. De andere auto's staan in de weg en elke auto kan enkel vooruit en achteruit bewegen. Auto's mogen meerdere vakjes per keer verschuiven maar er mag maar \'e\'en auto per zet verplaatst worden.
 We kunnen het zoeken naar een oplossing modelleren met behulp van een graaf, waarin elke stand een knoop is en elke mogelijke zet een boog. De eindtoestand waar we dan naar op zoek gaan is een stand van het bord waarin de rode auto zich buiten het bord bevindt.
 
-\subsection{Eindtoestand} De begintoestand is gegeven in figuur \ref{rushour}. De eindtoestand is een toestand waarin de rode auto zich buiten het bord bevindt. 
+\subsection{Eindtoestand} De begintoestand is gegeven in Figuur \ref{rushour}. De eindtoestand is een toestand waarin de rode auto zich buiten het bord bevindt. 
 
 \subsection{Kostfunctie}De kostfunctie voor het A* algoritme is een belangrijke parameter. De kost van een toestand beschrijven we als het aantal vakjes dat alle autootjes in totaal verplaatst zijn om tot de huidige toestand te komen. We zouden kunnen opteren voor het aantal zetten dat nodig is om in de huidige toestand te komen als kostfunctie. Deze functie maakt minder onderscheid tussen goede en slechte toestanden en zal het probleem dus minder snel oplossen.
 
-\subsection{Heuristische functie} De heuristische functie is een volgende belangrijke parameter voor het A* algoritme. Als heuristiek kiezen we het kleinste aantal auto's dat onbeweeglijk in de weg staat van de rode auto. We weten zeker dat dit een onderschatting is voor de totale kost omdat minstens al die auto's aan de kant moeten gezet worden. \footnote{We voegen hier nog \'e\'en aan toe, omdat doeltoestanden dan precies $0$ hebben als heuristische waarde en omdat de heuristische waarde van een toestand dan heel makkelijk intu\"itief te zien is. bvb: De heuristische waarde van de root is $3$ want $C$ staat in de weg van de rode auto en om $C$ te verplaatsen moeten er minstens $2$ auto's verplaatst worden, namelijk $A$ en $B$ of $O$ en $D$.}
+\subsection{Heuristische functie} De heuristische functie is een volgende belangrijke parameter voor het A* algoritme. Als heuristiek kiezen we het kleinste aantal auto's dat onbeweeglijk in de weg staat van de rode auto. We weten zeker dat dit een onderschatting is voor de totale kost omdat minstens al die auto's aan de kant moeten gezet worden.\footnote{We voegen er hier nog \'e\'en aan toe, omdat doeltoestanden dan precies $0$ hebben als heuristische waarde en omdat de heuristische waarde van een toestand dan heel makkelijk intu\"itief te zien is. bvb: De heuristische waarde van de root is $3$ want $C$ staat in de weg van de rode auto en om $C$ te verplaatsen moeten er minstens $2$ auto's verplaatst worden, namelijk $A$ en $B$ of $O$ en $D$.}
 Als heuristiek kunnen we bijvoorbeeld ook de afstand van het rode autootje naar zijn doelpositie gebruiken. We doen dit hier niet omdat dit de vraag onnodig langer zou maken.
 
 \section{Modeloplossing}
-De volledige oplossing voor dit probleem is sneller uit te leggen aan de hand van een rush-hour spelbord dan op papier. Dit probleem is echter een prachtig voorbeeld van hoe uiteenlopend de toepassingen van A* zijn. Ik zal daarom elk aspect van A* uit de oplossing slechts \'e\'en maal volledig uitwerken. Ik zal het probleem dus niet volledig oplossen, maar wel zo veel als nodig. Het volledige A* algoritme bevindt zich nog eens in de appendix (\ref{A*}).
+De volledige oplossing voor dit probleem is sneller uit te leggen aan de hand van een Rush Hour-spelbord dan op papier. Dit probleem is echter een prachtig voorbeeld van hoe uiteenlopend de toepassingen van A* zijn. Daarom zullen we aspect van A* uit de oplossing slechts \'e\'en maal volledig uitwerken. We zullen het probleem dus niet volledig oplossen, maar wel zo veel als nodig. Het volledige A* algoritme bevindt zich nog eens in de appendix (\ref{A*}).
 
 De volgende tabel stelt de begintoestand voor. Deze toestand is de wortel die initieel in de rij staat.
 \begin{center}
@@ -40,13 +40,13 @@ $root = $
 \hline
 \end{tabular}
 \end{center}
-We zullen in de uitwerking spreken over de $f$ functie. Deze definieren we als volgt.
+We zullen in de uitwerking spreken over de $f$ functie. Deze defini\"eren we als volgt:
 \[
 f(pad) = cost(pad) + heuristiek(einde(pad))
 \]
 
 \subsection{Iteratie 1}
-We starten nu de while-lus van het A* algoritme. We expanderen alle mogelijke toestanden die in 1 zet bereikbaar zijn vanaf de begintoestand. Die toestanden zetten we allemaal in de rij. We expanderen de nodes in volgorde van het alfabet en altijd de mogelijkheid waarin het autootje de grootste afstand aflegt eerst.
+We starten nu de while-lus van het A* algoritme. We expanderen alle mogelijke toestanden die in 1 zet bereikbaar zijn vanaf de begintoestand. Die toestanden zetten we allemaal in de rij. We expanderen de nodes in volgorde van het alfabet en altijd de toestand waarin het autootje de grootste afstand afgelegd heeft eerst.
 
 \begin{center}
 $T_{11} = $
@@ -136,12 +136,12 @@ f(T_{15}) &= 2 + 3 = 5\\
 f(T_{16}) &= 1 + 3 = 4\\
 \end{array}
 \]
-De rij ziet er na deze stap als volgt uit.
+De rij ziet er na deze stap als volgt uit:
 \[
 Q_1 = \{T_{12}, T_{13}, T_{11}, T_{16}, T_{15}, T_{14}\}
 \]
 \subsection{Iteratie 2}
-Om de volgende iteratie te beginnen, halen we het element met de kleinste $f$-waarde uit de rij (het eerste element). In dit geval is dit $T_{12}$. We expanderen deze toestand en verkrijgen de volgende mogelijke toestanden.
+Om de volgende iteratie te beginnen, halen we het element met de kleinste $f$-waarde uit de rij (het eerste element). In dit geval is dit $T_{12}$. We expanderen deze toestand en verkrijgen de volgende mogelijke toestanden:
 \begin{center}
 $T_{21} = $
 \scalebox{0.5}{
@@ -243,13 +243,13 @@ f(T_{26}) &= 3+ 2 = 5\\
 f(T_{27}) &= 4+ 2 = 6\\
 \end{array}
 \]
-We verkrijgen dan de volgende rij.
+We verkrijgen dan de volgende rij:
 \[
 Q_2 = \{T_{23}, T_{12}, T_{13}, T_{22}, T_{24}, T_{25}, T_{11}, T_{16}, T_{26}, T_{15}, T_{27}, T_{14}\}
 \]
 
 \subsection{Iteratie 3}
-Het volgende element dat we moeten expanderen is $T_{23}$. Wanneer we dit doen zien we dat we al vrij dicht bij de gewenste uitkomst komen. De volgende toestanden zijn de toestanden die bereikbaar zijn vanuit $T_{23}$.
+Het volgende element dat we moeten expanderen is $T_{23}$. Wanneer we dit doen, zien we dat we al vrij dicht bij de gewenste uitkomst komen. De volgende toestanden zijn de toestanden die bereikbaar zijn vanuit $T_{23}$:
 \begin{center}
 $T_{31} = $
 \scalebox{0.5}{
@@ -482,13 +482,13 @@ Q_4 = \{T_{13}, T_{41}, T_{43}, T_{47}, T_{45}, T_{46}, T_{47}, T_{48}, T_{49}, 
 T_{35}, T_{22}, T_{24}, T_{25}, T_{11}, T_{16}, T_{36}, T_{26}, T_{15}, T_{37}, T_{27}, T_{14}\}
 \]
 \end{center}
-We zien nu dat er een doeltoestand in de rij staat, namelijk $T_{49}$, maar A* zal nog niet stoppen, want $T_{49}$ staat nog niet vooraan de lijst.
+We zien nu dat er een doeltoestand in de rij staat, namelijk $T_{49}$, maar A* zal nog niet stoppen, want $T_{49}$ staat nog niet vooraan in de lijst.
 
 \subsection{Verdere uitwerking}
-De verdere uitwerking van de oplossing zal ik hier niet volledig opschrijven, maar beschrijven.
+De verdere uitwerking van de oplossing zullen we hier niet volledig opschrijven, maar kort beschrijven.
 
 Eigen aan dit probleem is dat er in de latere iteraties zeer veel cycli zullen worden gevormd, omdat het aantal mogelijke staten eindig en zelfs vrij klein is.
-Als we de vierde iteratie naar de rij kijken, zien we dat de doeloplossing die er in zit, op de negende plaats staat. Vanaf nu zal A* enkel nog oplossingen vinden die slechter zijn dan het pad naar $T_{49}$, en dus worden verwijderd. In deze opgave is het toevallig zo dat er twee even lange paden zijn naar een eindtoestand. A* zal ze dus zeker alle twee gevonden hebben op een bepaald moment. Het algoritme zal \'e\'en van de twee paden verwijderen uit de rij. We weten dus dat A*, in dit specifiek geval, nog minstens 9 iteraties zal voltooien voordat het tot een oplossing komt. Bovendien zijn er paden die nooit zullen bekeken worden. Hiervan is het pad met $T_{14}$ een voorbeeld.
+Als we naar de rij kijken na de vierde iteratie, zien we dat er een doeloplossing in zit, op de negende plaats staat. Vanaf nu zal A* enkel nog oplossingen vinden die slechter zijn dan het pad naar $T_{49}$, en dus worden verwijderd. In deze opgave is het toevallig zo dat er twee even lange paden zijn naar een eindtoestand. A* zal ze dus zeker alle twee vinden op een bepaald moment. Het algoritme zal \'e\'en van de twee paden verwijderen uit de rij. We weten dus dat A*, in dit specifiek geval, nog minstens 9 iteraties zal voltooien voordat het tot een oplossing komt. Bovendien zijn er paden die nooit zullen bekeken worden. Hiervan is het pad met $T_{14}$ een voorbeeld.
 
 Elk aspect van A* is nu aan bod gekomen.
 \begin{itemize}
