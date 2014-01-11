@@ -2,8 +2,8 @@
 \begin{document}
 
 \chapter{Matchmaker}
-Je loopt deze zomer stage bij een matchmakingbureau om ervaring te doen over hoe artifici\"ele intelligentie toegepast kan worden.
-Het bureau waar je stage doet wil een systeem maken dat hen zegt of een potenti\"ele partner al dan niet goed is voor een bepaalde cli\"ent. Je helpt ze een systeem te ontwikkelen dat machine learning gebruikt om te voorspellen hoe de cli\"ent een potenti\"ele partner zal beoordelen.
+Je loopt deze zomer stage bij een matchmakingbureau om ervaring op te doen over hoe artifici\"ele intelligentie toegepast kan worden.
+Het bureau waar je stage doet, wil een systeem maken dat hen zegt of een potenti\"ele partner al dan niet goed is voor een bepaalde cli\"ent. Je helpt ze een systeem te ontwikkelen dat machine learning gebruikt om te voorspellen hoe de cli\"ent een potenti\"ele partner zal beoordelen.
 
 \section{Vraag}
 Het bureau vraagt kandidaten een aantal persoonlijke eigenschappen op te geven.
@@ -14,7 +14,7 @@ De specifieke mogelijkheden zijn voor elke eigenschap beperkt.
 \item Muziek: pop / latin / jazz  / klassiek
 \item Sport: tennis / golf / joggen / fitness / voetbal
 \end{itemize}
-De cli\"ent heeft de vorige kandidaten beoordeeld zoals beschreven in figuur \ref{beoordeling}
+De cli\"ent heeft de vorige kandidaten beoordeeld zoals beschreven in Figuur \ref{beoordeling}
 \begin{figure}[H]
 \centering
 \caption{Beoordeling}
@@ -105,7 +105,7 @@ S = \{\bot\}
 \[
 G = \{[?,?,?,?]\}
 \]
-De hypothesen die in $S$ en $G$ zitten zijn na elke iteratie getekend in een graaf. De graaf bestaat uit twee bomen waarvan de bovenste $S$ voorstelt en de onderste $G$. Niet alle hypothesen die getekend zijn zitten echter in $G$ of in $S$. Als een hypothese niet in \'e\'en van de verzamelingen zit wordt het met een ellips afgebeeld. De rechthoekige nodes zitten wel in $G$ of $S$.
+De hypothesen die in $S$ en $G$ zitten, zijn na elke iteratie getekend in een graaf. De graaf bestaat uit twee bomen waarvan de bovenste $S$ voorstelt en de onderste $G$. Niet alle hypothesen die getekend zijn zitten echter in $G$ of in $S$. Als een hypothese niet in \'e\'en van de verzamelingen zit wordt het met een ellips afgebeeld. De rechthoekige nodes zitten wel in $G$ of $S$.
 \subsection{Iteratie 1}
 \begin{figure}
 [H]
@@ -114,7 +114,7 @@ De hypothesen die in $S$ en $G$ zitten zijn na elke iteratie getekend in een gra
 \label{iter_1}
 \includegraphics[scale=0.5]{resources/graphs/iteration_1.png}
 \end{figure}
-Het eerste voorbeeld is een positief voorbeeld. We generaliseren alle hypothesen in $S$ waaraan het voorbeeld niet voldoet. $\bot$ wordt dus gegeneraliseerd naar de hypothese die het voorbeeld precies omvat. Het resultaat zien we in figuur \ref{iter_1}.
+Het eerste voorbeeld is een positief voorbeeld. We generaliseren alle hypothesen in $S$ waaraan het voorbeeld niet voldoet. $\bot$ wordt dus gegeneraliseerd naar de hypothese die het voorbeeld precies omvat. Het resultaat zien we in Figuur \ref{iter_1}.
 \begin{itemize}
 \item $G = \{[?,?,?,?]\}$
 \item $S = \{[v,z,j,v]\}$
@@ -128,7 +128,7 @@ Het eerste voorbeeld is een positief voorbeeld. We generaliseren alle hypothesen
 \label{iter_2}
 \includegraphics[scale=0.5]{resources/graphs/iteration_2.png}
 \end{figure}
-Het volgende voorbeeld is negatief beoordeeld. We specifi\"eren alle hypothesen in $G$ waaraan het voorbeeld voldoet. $[m,j,p,j]$ voldoet aan $[?,?,?,?]$ dus we moeten dit specifi\"eren tot het voorbeeld net niet meer aan die nieuwe hypothese(n) voldoet. We voegen in totaal zes hypothesen toe onder $[?,?,?,?]$. Nu begint het snoeien. We verwijderen $[?,o,?,?]$ en $[?,?,?,f]$ omdat deze hypothesen inconsistent zijn met $[v,z,j,v]$. Een overzicht van deze iteratie zien we in figuur \ref{iter_2}.
+Het tweede voorbeeld is negatief beoordeeld. We specifi\"eren alle hypothesen in $G$ waaraan het voorbeeld voldoet. $[m,j,p,j]$ voldoet aan $[?,?,?,?]$ dus we moeten dit specifi\"eren tot het voorbeeld net niet meer aan die nieuwe hypothese(n) voldoet. We voegen in totaal zes hypothesen toe onder $[?,?,?,?]$. Nu begint het snoeien. We verwijderen $[?,o,?,?]$ en $[?,?,?,f]$ omdat deze hypothesen inconsistent zijn met $[v,z,j,v]$. Een overzicht van deze iteratie zien we in Figuur \ref{iter_2}.
 \begin{itemize}
 \item $G = \{[v,?,?,?],[?,z,?,?],[?,?,s,?],[?,?,?,r]\}$
 \item $S = \{[v,z,j,v]\}$
@@ -142,11 +142,11 @@ Het volgende voorbeeld is negatief beoordeeld. We specifi\"eren alle hypothesen 
 \label{iter_3}
 \includegraphics[scale=0.35]{resources/graphs/iteration_3.png}
 \end{sidewaysfigure}
-Voorbeeld $3$ is opnieuw negatief beoordeeld. We voeren opnieuw de bovenstaande procedure uit. Deze keer worden er weer een aantal hypothesen gesnoeid, maar we kunnen nu ook enkele hypothesen verwijderen omdat ze redundant zijn. $[?,z,j,?]$ en $[?,z,?,v]$ zijn respectievelijk specificaties van $[?,?,s,?]$ en $[?,?,?,r]$ en kunnen daarom ook verwijderd worden uit $G$. Zie figuur \ref{iter_3} voor het volledige overzicht van deze iteratie.
+Voorbeeld $3$ is opnieuw negatief beoordeeld. We voeren opnieuw de bovenstaande procedure uit. Deze keer worden er weer een aantal hypothesen gesnoeid, maar we kunnen nu ook enkele hypothesen verwijderen omdat ze redundant zijn. $[?,z,j,?]$ en $[?,z,?,v]$ zijn respectievelijk specificaties van $[?,?,s,?]$ en $[?,?,?,r]$ en kunnen daarom ook verwijderd worden uit $G$. Zie Figuur \ref{iter_3} voor het volledige overzicht van deze iteratie.
 \begin{itemize}
 \item $G = \{[?,v,?,j],[v,?,?,r],[?,z,j,?],[?,z,?,v]\}$
 \item $S = \{[v,z,j,v]\}$
-\item Gesnoeid: $[v,j,?,?]$, $[v,o,?,?]$, $[v,?,m,?]$, $[v,?,?,j]$, $[m,z,?,?]$, $[?,z,m,?]$, $[?,z,?,t]$,
+\item Gesnoeid: $[v,j,?,?]$, $[volgendev,o,?,?]$, $[v,?,m,?]$, $[v,?,?,j]$, $[m,z,?,?]$, $[?,z,m,?]$, $[?,z,?,t]$,
 
 $[?,z,?,n]$ en $[?,z,j,?]$, $[?,z,?,v]$
 \end{itemize}
@@ -158,7 +158,7 @@ $[?,z,?,n]$ en $[?,z,j,?]$, $[?,z,?,v]$
 \label{iter_4}
 \includegraphics[scale=0.5]{resources/graphs/iteration_4.png}
 \end{figure}
-Het volgende voorbeeld $4$ is een tweede voorbeeld dat positief beoordeeld is. We generaliseren $[v,s,j,v]$ tot een hypothese die ook het nieuwe voorbeeld omvat. Hiervoor zijn twee mogelijkheden die we beide toevoegen zoals beschreven in figuur \ref{iter_4}.
+Het volgende voorbeeld $4$ is een tweede voorbeeld dat positief beoordeeld is. We generaliseren $[v,s,j,v]$ tot een hypothese die ook het nieuwe voorbeeld omvat. Hiervoor zijn twee mogelijkheden die we beide toevoegen zoals beschreven in Figuur \ref{iter_4}.
 \begin{itemize}
 \item $G = \{[v,?,?,r],[?,z,j,?],[?,z,?,v]\}$
 \item $S = \{[v,?,s,r],[v,?,s,a]\}$
@@ -171,7 +171,7 @@ Het volgende voorbeeld $4$ is een tweede voorbeeld dat positief beoordeeld is. W
 \label{iter_5}
 \includegraphics[scale=0.5]{resources/graphs/iteration_5.png}
 \end{figure}
-In iteratie 5 behandelen we ten slotte nog een positief voorbeeld. Deze keer wordt er maar \'e\'en hypothese toegevoegd en deze wordt meteen al weer verwijderd omdat ze een generalisatie is van $[v,?,s,r]$ en dus redundant is. De beschrijving van deze iteratie is te vinden in figuur \ref{iter_5}. Het resultaat van het version spaces algoritme zien we in figuur \ref{resultaat}.
+In iteratie 5 behandelen we ten slotte nog een positief voorbeeld. Deze keer wordt er maar \'e\'en hypothese toegevoegd en deze wordt meteen al weer verwijderd omdat ze een generalisatie is van $[v,?,s,r]$ en dus redundant is. De beschrijving van deze iteratie is te vinden in Figuur \ref{iter_5}. Het resultaat van het version spaces algoritme zien we in Figuur \ref{resultaat}.
 \begin{itemize}
 \item $G = \{[v,?,?,r],[?,z,j,?],[?,z,?,v]\}$
 \item $S = \{[v,?,s,r],[v,?,s,a]\}$
