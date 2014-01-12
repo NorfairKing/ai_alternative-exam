@@ -3,7 +3,7 @@
 
 \chapter{Matchmaker}
 Je loopt deze zomer stage bij een matchmakingbureau om ervaring op te doen over hoe artifici\"ele intelligentie toegepast kan worden.
-Het bureau waar je stage doet, wil een systeem maken dat hen zegt of een potenti\"ele partner al dan niet goed is voor een bepaalde cli\"ent. Je helpt ze een systeem te ontwikkelen dat machine learning gebruikt om te voorspellen hoe de cli\"ent een potenti\"ele partner zal beoordelen.
+Het bureau waar je stage doet, wil een systeem ontwerpen dat hen zegt of een potenti\"ele partner al dan niet goed is voor een bepaalde cli\"ent. Je helpt ze een systeem te ontwikkelen dat machine learning gebruikt om te voorspellen hoe de cli\"ent een potenti\"ele partner zal beoordelen.
 
 \section{Vraag}
 Het bureau vraagt kandidaten een aantal persoonlijke eigenschappen op te geven.
@@ -94,7 +94,7 @@ Aan de hand van de formulering van het systeem heeft het IT departement een hypo
 
 \end{tikzpicture}
 \end{figure}
-Aan het eind van de dag komt er een dame binnen die jonger is dan de cli\"ent, naar jazzmuziek luistert, en elke week gaat joggen. Is deze dame een goede match voor de cli\"ent, volgens het systeem?
+Aan het eind van de dag komt er een dame binnen die jonger is dan de cli\"ent, naar jazzmuziek luistert, en elke week gaat joggen. Is deze dame, volgens het systeem, een goede match voor de cli\"ent?
 
 \section{Modeloplossing}
 % TODO toevoegen wat S is, wat G is, wat de vormen van de nodes betekenen.
@@ -105,7 +105,7 @@ S = \{\bot\}
 \[
 G = \{[?,?,?,?]\}
 \]
-De hypothesen die in $S$ en $G$ zitten, zijn na elke iteratie getekend in een graaf. De graaf bestaat uit twee bomen waarvan de bovenste $S$ voorstelt en de onderste $G$. Niet alle hypothesen die getekend zijn zitten echter in $G$ of in $S$. Als een hypothese niet in \'e\'en van de verzamelingen zit wordt het met een ellips afgebeeld. De rechthoekige nodes zitten wel in $G$ of $S$.
+De hypothesen die in $S$ en $G$ zitten, zijn na elke iteratie getekend in een graaf. De graaf bestaat uit twee bomen waarvan de bovenste $S$ voorstelt en de onderste $G$. Niet alle hypothesen die getekend zijn zitten echter in $G$ of in $S$. Als een hypothese niet in \'e\'en van de verzamelingen zit, wordt het met een ellips afgebeeld. De rechthoekige nodes zitten wel in $G$ of $S$.
 \subsection{Iteratie 1}
 \begin{figure}
 [H]
