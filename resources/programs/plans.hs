@@ -10,7 +10,7 @@ plans = [[a,b,c,d,e] | a <- p, b <- p, c <- p, d <- p, e <- p, a /= b, a /= c, a
 
 possible = [ p | p <- plans, be "NE" "BE" p, be "NS" "BS" p, be "BS" "DSO" p]
 
-strings = [ "BEGIN \\rightarrow HEEN \\rightarrow "++a++" \\rightarrow "++b++" \\rightarrow "++c++" \\rightarrow "++d++" \\rightarrow "++e++"\\rightarrow LBO \\rightarrow TERUG \\rightarrow EINDE\\\\" | [a,b,c,d,e] <- possible]
+strings = [ "BEGIN \\rightarrow HEEN \\rightarrow "++a++" \\rightarrow "++b++" \\rightarrow "++c++" \\rightarrow "++d++" \\rightarrow "++e++"\\rightarrow LOB \\rightarrow TERUG \\rightarrow EINDE\\\\" | [a,b,c,d,e] <- possible]
 
 main = do
     mapM_ putStrLn strings
